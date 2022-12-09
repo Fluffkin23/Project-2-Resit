@@ -207,6 +207,31 @@ li {
 }
 /* End Registration Page */
 
+/* Start Login Page */
+  .login-title{
+    color:#2F1C6A;
+    font-weight: bold;
+    font-weight: bold;
+    border-left-width: 100px;
+    padding-left: 100px;
+    margin-left: 600px;
+  }
+  
+.login-form{
+  display: grid;
+  grid-template-columns: 100px 100px;
+
+}
+.login_container{
+  display: grid;
+  grid-template-rows: 20vw 40vw ;
+}
+.login
+
+
+
+/* End Login Page */
+
 
 
 /* start contact us page */
