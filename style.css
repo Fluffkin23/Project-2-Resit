@@ -211,22 +211,64 @@ li {
   .login-title{
     color:#2F1C6A;
     font-weight: bold;
-    font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
+    /* font-weight: bold;
     border-left-width: 100px;
     padding-left: 100px;
-    margin-left: 600px;
+    margin-left: 600px; */
   }
-  
-.login-form{
-  display: grid;
-  grid-template-columns: 100px 100px;
-
-}
 .login_container{
   display: grid;
-  grid-template-rows: 20vw 40vw ;
+  grid-template-rows: 20vh 20vh ;
 }
-.login
+/* .login-form{
+  display: grid;
+  grid-template-rows: 20vh 10vh;
+} */
+.login-data{
+  display: grid;
+  grid-template-columns: 40vw 40vw;
+  padding-left: 10vw;
+}
+.email{
+  float: left;
+  color: #2F1C6A;
+  font-size: 1.5rem;
+}
+.email input{
+  width: 50%;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  background: #2F1C6A;
+  margin-left: 2vw;
+}
+.password{
+  float: left;
+  color: #2F1C6A;
+  font-size: 1.5rem;
+}
+.password input{
+  width: 50%;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  background: #2F1C6A;
+  margin-left: 2vw;
+}
+.submit-button input{
+  border-radius: 2rem;
+  width: 20rem;
+  padding: 1rem;
+  font-size:1.3rem ;
+  color:#fff;
+  background-color: #2F1C6A;
+}
+.submit-button{
+  margin-top: 10vh;
+  /* margin-left: 10vh; */
+  justify-content: center;
+  display: grid;
+}
 
 
 
