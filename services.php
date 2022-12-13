@@ -1,3 +1,6 @@
+<?php
+require_once 'include/database.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,6 +11,7 @@
         <title>Document</title>
     </head>
     <body>
+    
         <nav class="navbar">
 
             <div class="logo">
@@ -17,15 +21,29 @@
             <ul class="nav-links">
 
                 <div class="menu">
-                    <li><a href="/contracts.html">Contracts</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/ticket.html">Ticket</a></li>
-                    <li><a href="/contactsUs.html">Contact Us</a></li>
-                    <li><a href="/login.html">Log In</a></li>
+                    <li><a href="contracts.html">Contracts</a></li>
+                    <li><a href="services.php">Services</a></li>
+                    <li><a href="ticket.html">Ticket</a></li>
+                    <li><a href="contactsUs.html">Contact Us</a></li>
+                    <li><a href="login.html">Log In</a></li>
                 </div>
 
             </ul>
         </nav>
+    <?php
+    $sql = "SELECT * FROM services";
+    $result = mysqli_query($conn, $sql);
+    $rowCount = mysqli_num_rows();
+
+    if($rowCount>0){
+        while($row = mysqli_fetch_assoc($result)){
+            echo $row['SERVICE_NAME']. "<br>";
+        }
+    }else{
+        echo "No results found.";
+    }
+
+    ?>
 
         <div class="footer">
             <h1>The future of change: are you ready?</h1>
