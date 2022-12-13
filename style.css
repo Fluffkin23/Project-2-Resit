@@ -191,20 +191,69 @@ li {
 /* end index page */
 /* Start Registration Page */
 
-/* .reg-title{
-  font-size: 40px;
-  color: #2F1C6A;
+.reg-container{
+  
+}
+
+.reg{
+  display: grid;
+  grid-template-rows: 10vh 30vh;
+}
+
+.reg-title{
+  color:#2F1C6A;
   font-weight: bold;
-  border-left-width: 100px;
-  padding-left: 100px;
-  margin-left: 600px;
-} */
+  text-align: center;
+  font-size: 2rem;
+}
 .reg-form{
-  font-size: 20px;
+  display: grid;
+  grid-template-columns: auto auto;
+  font-size: 1.4rem;
   font-weight: bolder;
   color: #2F1C6A;
-  border-left: 100px;
+  margin-left: 20vw;
 }
+.reg-name input{
+  width: 15vw;
+  padding:0.5vw;
+  border-radius: 1.5rem;
+  background: #2F1C6A;
+  margin-left: 2.5vw;
+}
+.reg-email input{
+  width: 15vw;
+  padding:0.5vw;
+  border-radius: 1.5rem;
+  background: #2F1C6A;
+  margin-left: 7vw;
+}
+.reg-surname input{
+  width: 15vw;
+  padding:0.5vw;
+  border-radius: 1.5rem;
+  background: #2F1C6A;
+}
+.reg-phone input{
+  width: 15vw;
+  padding:0.5vw;
+  border-radius: 1.5rem;
+  background: #2F1C6A;
+}
+.reg-submit{
+  text-align: center;
+  margin-top: 7vh;
+  
+}
+.reg-submit input{
+  color:#fff;
+  font-weight: bold;
+  width: 15vw;
+  padding:0.5vw;
+  border-radius: 1.5rem;
+  background-color: #2F1C6A;
+}
+
 /* End Registration Page */
 
 /* Start Login Page */
@@ -212,11 +261,7 @@ li {
     color:#2F1C6A;
     font-weight: bold;
     text-align: center;
-    font-size: 1.5rem;
-    /* font-weight: bold;
-    border-left-width: 100px;
-    padding-left: 100px;
-    margin-left: 600px; */
+    font-size: 1.5rem; 
   }
 .login_container{
   display: grid;
