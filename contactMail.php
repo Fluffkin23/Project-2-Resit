@@ -26,37 +26,24 @@
 
 </ul>
 </nav>
-<main class="login_container">
-            <div class="login-title">
-                <h1> Contact Form </h1>
-            </div>
-            <div class="login-form">
-                <form action="send.php" method="post">
-                    <div class="login-data">
-                        <div class="email">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email">
-                        </div>
-                        <div class="password">
-                            <label for="Subject">Subject</label>
-                            <input type="text" name="subject" id="subject">
-                        </div> 
-                        <div class="password">
-                            <label for="Message">Message</label>
-                            <input type="text" name="message" id="message">
-                        </div> 
-                    </div>
-                    <div class="submit-button">
-                        <input type="submit" name="send" value="Send Email">
-                    </div>
-                </form>
-            </div>
-</main>
+<div class="contact-section">
 
-<!-- <footer class="login-footer">
-            <div class="footer">
+    <h1>Contact Us</h1>
+    <div class="border"></div>
+    <form class="contact-form" action="send.php" method="post">
+      <input type="text" class="contact-form-text" placeholder="Your name">
+      <input type="email" name="email" class="contact-form-text" placeholder="Your email">
+      <input type="text" name="subject" class="contact-form-text" placeholder="subject">
+      <textarea class="contact-form-text" name="message" placeholder="Your message"></textarea>
+      <input type="submit" name="send" class="contact-form-btn" value="Send">
+    </form>
+  </div>
+
+
+<footer class="login-footer">
+        <div class="footer">
             <h1>The future of change: are you ready?</h1>
         </div>
-        </footer> -->
+</footer> 
 </body>
 </html>
