@@ -1,3 +1,69 @@
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpMailer/Exception.php';
+require 'phpMailer/PHPMailer.php';
+require 'phpMailer/SMTP.php';
+
+if(isset($_POST['send'])) 
+{
+  if((!empty($_POST['email']))&& (!empty($_POST['subject']))&&(!empty($_POST['message'])))
+  {
+    if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
+    {
+
+      $mail = new PHPMailer;
+      $mail->isSMTP();
+      $mail->Host = 'smtp.gmail.com';
+      $mail->SMTPAuth = true;
+      $mail->SMTPSecure = 'ssl';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'kaisersunny2016@gmail.com';
+      $mail->Password = 'ouadtfpdgngnsmxw';
+      $mail->Port = 465;
+
+      $mail->setFrom('kaisersunny2016#gmail.com');
+
+      $mail->addAddress($_POST['email']);
+
+      $mail->isHTML(true);
+
+      $mail->Subject = $_POST['subject'];
+      $mail->Body = $_POST['message'];
+
+      $mail->send();
+
+      echo
+      "
+      <script>
+        alert('Email Sent successfully');
+        document.location.href = 'contactMail.php';
+      </script>
+      ";
+    }else
+    {
+      echo
+      "
+      <script>
+      alert('Email not valid');
+      document.location.href = 'contactMail.php';
+      </script>
+      ";
+    }
+    } else 
+    {
+      echo
+      "
+      <script>
+      alert('Email not sent successfully! please fill up email, subject and message');
+      document.location.href = 'contactMail.php';
+      </script>
+      ";
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +96,9 @@
 
     <h1>Contact Us</h1>
     <div class="border"></div>
-    <form class="contact-form" action="send.php" method="post">
+    <form class="contact-form" action="<?= htmlentities($_SERVER['PHP_SELF']);?>" method="post">
       <input type="text" class="contact-form-text" placeholder="Your name">
-      <input type="email" name="email" class="contact-form-text" placeholder="Your email">
+      <input type="text" name="email" class="contact-form-text" placeholder="Your email">
       <input type="text" name="subject" class="contact-form-text" placeholder="subject">
       <textarea class="contact-form-text" name="message" placeholder="Your message"></textarea>
       <input type="submit" name="send" class="contact-form-btn" value="Send">

@@ -191,10 +191,6 @@ li {
 /* end index page */
 /* Start Registration Page */
 
-.reg-container{
-  
-}
-
 .reg{
   display: grid;
   grid-template-rows: 10vh 30vh;
