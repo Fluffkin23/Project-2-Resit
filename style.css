@@ -192,7 +192,7 @@ li {
 /* Start Registration Page */
 
 .reg-container{
-  
+  display: grid;
 }
 
 .reg{
@@ -267,10 +267,6 @@ li {
   display: grid;
   grid-template-rows: 20vh 20vh ;
 }
-/* .login-form{
-  display: grid;
-  grid-template-rows: 20vh 10vh;
-} */
 .login-data{
   display: grid;
   grid-template-columns: 40vw 40vw;
@@ -310,13 +306,9 @@ li {
 }
 .submit-button{
   margin-top: 10vh;
-  /* margin-left: 10vh; */
   justify-content: center;
   display: grid;
 }
-
-
-
 /* End Login Page */
 
 
