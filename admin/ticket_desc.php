@@ -34,6 +34,8 @@ include("header.php")
                     <a  href="ticket_desc.php" >Ticket in Desc way </a><br>
                     <a  href="ticket.php" >All tickets </a><br>
 
+
+
                 </div>
                 <div class="row">
                     <table class="table table-hover">
@@ -49,7 +51,7 @@ include("header.php")
                         </tr>
                         </thead>
                         <tbody>
-                            <?php get_ticket(); ?>
+                        <?php ticket_Desc(); ?>
                         </tbody>
                     </table>
                 </div>

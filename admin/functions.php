@@ -164,5 +164,108 @@ DELIMETER;
     }
 }
 
+function ticket_done()
+{
+    $query = query("SELECT * FROM ticket_table WHERE STATUS = 'DONE'");
+    while ($row = fetch_array($query)) {
+        $product = <<<DELIMETER
+<tr>
+    <td>{$row['TICKET_ID']}</td>
+    <td>{$row['CUSTOMER_ID']}</td>
+    <td>{$row['SERVICE_ID']} </td>
+    <td>{$row['SERVICE_NAME']}</td>
+   <td>{$row['SERVICE_DESCRIPTION']}</td>
+      <td>{$row['DATE']}</td>
+    <td>{$row['STATUS']}</td>
+   <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+   <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+</tr>
+DELIMETER;
+        echo $product;
+    }
+}
+function ticket_in_progress()
+{
+    $query = query("SELECT * FROM ticket_table WHERE STATUS = 'IN PROGRESS'");
+    while ($row = fetch_array($query)) {
+        $product = <<<DELIMETER
+<tr>
+    <td>{$row['TICKET_ID']}</td>
+    <td>{$row['CUSTOMER_ID']}</td>
+    <td>{$row['SERVICE_ID']} </td>
+    <td>{$row['SERVICE_NAME']}</td>
+   <td>{$row['SERVICE_DESCRIPTION']}</td>
+      <td>{$row['DATE']}</td>
+    <td>{$row['STATUS']}</td>
+   <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+   <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+</tr>
+DELIMETER;
+        echo $product;
+    }
+}
+
+function ticket_Desc()
+{
+    $query = query("SELECT * FROM ticket_table ORDER BY date(DATE) DESC");
+    while ($row = fetch_array($query)) {
+        $product = <<<DELIMETER
+<tr>
+    <td>{$row['TICKET_ID']}</td>
+    <td>{$row['CUSTOMER_ID']}</td>
+    <td>{$row['SERVICE_ID']} </td>
+    <td>{$row['SERVICE_NAME']}</td>
+   <td>{$row['SERVICE_DESCRIPTION']}</td>
+      <td>{$row['DATE']}</td>
+    <td>{$row['STATUS']}</td>
+   <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+   <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+</tr>
+DELIMETER;
+        echo $product;
+    }
+}
+function ticket_Asc()
+{
+    $query = query("SELECT * FROM ticket_table ORDER BY date(DATE) ASC");
+    while ($row = fetch_array($query)) {
+        $product = <<<DELIMETER
+<tr>
+    <td>{$row['TICKET_ID']}</td>
+    <td>{$row['CUSTOMER_ID']}</td>
+    <td>{$row['SERVICE_ID']} </td>
+    <td>{$row['SERVICE_NAME']}</td>
+   <td>{$row['SERVICE_DESCRIPTION']}</td>
+      <td>{$row['DATE']}</td>
+    <td>{$row['STATUS']}</td>
+   <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+   <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+</tr>
+DELIMETER;
+        echo $product;
+    }
+}
+
+function ticket_new()
+{
+    $query = query("SELECT * FROM ticket_table WHERE STATUS ='NEW'");
+    while ($row = fetch_array($query)) {
+        $product = <<<DELIMETER
+<tr>
+    <td>{$row['TICKET_ID']}</td>
+    <td>{$row['CUSTOMER_ID']}</td>
+    <td>{$row['SERVICE_ID']} </td>
+    <td>{$row['SERVICE_NAME']}</td>
+   <td>{$row['SERVICE_DESCRIPTION']}</td>
+      <td>{$row['DATE']}</td>
+    <td>{$row['STATUS']}</td>
+   <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+   <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+</tr>
+DELIMETER;
+        echo $product;
+    }
+}
+
 
 ?>

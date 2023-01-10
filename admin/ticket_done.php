@@ -28,8 +28,8 @@ include("header.php")
                 <div class="row">
                     <h1 class="page-header">Tickets </h1>
                     <a href="ticket_new.php" >Tickets just received </a> <br>
-                    <a  href="ticket_done.php" >Tickets Done </a><br>
-                    <a  href="ticket_in_progress.php" >Tickets In Progress </a><br>
+                    <a href="ticket_done.php" >Tickets Done </a><br>
+                    <a href="ticket_in_progress.php" >Tickets In Progress </a><br>
                     <a  href="ticket_asc.php" >Ticket in Asc way </a><br>
                     <a  href="ticket_desc.php" >Ticket in Desc way </a><br>
                     <a  href="ticket.php" >All tickets </a><br>
@@ -49,7 +49,7 @@ include("header.php")
                         </tr>
                         </thead>
                         <tbody>
-                            <?php get_ticket(); ?>
+                        <?php ticket_done(); ?>
                         </tbody>
                     </table>
                 </div>
