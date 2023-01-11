@@ -8,26 +8,9 @@
     <title>Create account</title>
 </head>
 <body>
-<header>
-    <nav class="navbar">
-
-        <div class="logo">
-            <img src="/res/logo.png" alt="logo">
-        </div>
-
-        <ul class="nav-links">
-
-            <div class="menu">
-                <li><a href="/contracts.html">Contracts</a></li>
-                <li><a href="/services.html">Services</a></li>
-                <li><a href="/ticket.html">Ticket</a></li>
-                <li><a href="/contactsUs.html">Contact Us</a></li>
-                <li><a href="/login.html">Log In</a></li>
-            </div>
-
-        </ul>
-    </nav>
-</header>
+<?php
+    include_once "header.php";
+?>
 <div class="reg-container">
     <main class="reg">
         <div class="reg-title">

@@ -2,7 +2,7 @@
 
     include "dbh.inc.php";
 
-    function emptyInputSignup($conn, $username, $surname, $email, $phone, $password, $rpassword){
+    function emptyInputSignup($username, $surname, $email, $phone, $password, $rpassword){
         $result;
 
         if(empty($username) || empty($surname) || empty($email) || empty($phone) || empty($password) || empty($rpassword)){
@@ -77,8 +77,8 @@
     }
 
     function createUser($conn, $username, $surname, $email, $phone, $password){
-        $sql = "INSERT INTO users (NAME, surname, EMAIL, PHONE_NUMBER, password, CUSTOMER_ID) 
-                VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO customer (NAME, surname, EMAIL, PHONE_NUMBER, password) 
+                VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             header("location: ../signup.php?error=stmtfailed");

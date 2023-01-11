@@ -220,6 +220,7 @@ li {
   border-radius: 1.5rem;
   background: #2F1C6A;
   margin-left: 2.5vw;
+  color: white;
 }
 .reg-email input{
   width: 15vw;
@@ -227,30 +228,21 @@ li {
   border-radius: 1.5rem;
   background: #2F1C6A;
   margin-left: 7vw;
+  color: white;
 }
 .reg-surname input{
   width: 15vw;
   padding:0.5vw;
   border-radius: 1.5rem;
   background: #2F1C6A;
+  color: white;
 }
 .reg-phone input{
   width: 15vw;
   padding:0.5vw;
   border-radius: 1.5rem;
   background: #2F1C6A;
-}
-.reg-password input{
-  width: 15vw;
-  padding:0.5vw;
-  border-radius: 1.5rem;
-  background: #2F1C6A;
-}
-.reg-rpassword input{
-  width: 15vw;
-  padding:0.5vw;
-  border-radius: 1.5rem;
-  background: #2F1C6A;
+  color: white;
 }
 .reg-submit{
   text-align: center;
@@ -264,6 +256,26 @@ li {
   padding:0.5vw;
   border-radius: 1.5rem;
   background-color: #2F1C6A;
+  color: white;
+}
+.reg-password input{
+  color:#fff;
+  font-weight: bold;
+  width: 15vw;
+  padding:0.5vw;
+  border-radius: 1.5rem;
+  background-color: #2F1C6A;
+  color: white;
+}
+
+.reg-rpassword input{
+  color:#fff;
+  font-weight: bold;
+  width: 15vw;
+  padding:0.5vw;
+  border-radius: 1.5rem;
+  background-color: #2F1C6A;
+  color: white;
 }
 
 /* End Registration Page */
@@ -379,7 +391,7 @@ ul {
   background: darkblue;
   color: white;
   border-radius: 5px;
-  border-color: ;
+  border-color:black ;
   border-style: solid;
   height: 30px;
   width: 190px;
