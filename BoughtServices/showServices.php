@@ -10,7 +10,7 @@ $all_property = array();  //declare an array for saving property
 echo '<table class="data-table">
         <tr class="data-heading">';  //initialize table tag
 while ($property = mysqli_fetch_field($result)) {
-    echo '<td>' . $property->name . '</td>';  //get field name for header
+    echo '<td class=tdStyle>' . $property->name . '</td>';  //get field name for header
     $all_property[] = $property->name;  //save those to array
 }
 echo '</tr>'; //end tr tag

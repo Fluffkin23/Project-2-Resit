@@ -1,20 +1,23 @@
 <?php 
 
-function createUserID($conn, $username, $surname, $email, $phone, $password){
-    $sql = "INSERT INTO customer (NAME, surname, EMAIL, PHONE_NUMBER, password) 
-            VALUES (?, ?, ?, ?, ?)";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../signup.php?error=stmtfailed");
-        exit();
-    }
+    $host = "127.0.0.1";
+    $user = "root";
+    $pass = "";
+    $db_name = "service_it";
 
-    $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
+    //create connection
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+    $db = mysqli_connect($host, $user, $pass, $db_name);
 
-    mysqli_stmt_bind_param($stmt, "sssss", $username,
-        $surname, $email, $phone, $hashedpassword);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    header("location: ../signup.php?error=none");
-    exit();
+
+$ID_login = mysqli_query($db,"SELECT * FROM `login` WHERE ID=''");
+$ID_bought_services = mysqli_query($db,"SELECT * FROM `bought_services` WHERE CUSTOMER_ID=''");
+
+$approved = require_once("showServices.php");
+
+if ($ID_login == $ID_bought_services) {
+    $approved;
+} else {
+    include "logout.inc.php";
+    echo "Something went wrong, your Customer ID is not matching the Customer Login ID";
 }
