@@ -9,17 +9,17 @@
 </head>
 <body>
     <?php
-         include_once "header.php";
+         include_once "../Resources/header.php";
     ?>
     <section class="index-intro">
         <?php
         if (isset($_SESSION["customer"])){
             echo "<p> Hello there " . $_SESSION["CUSTOMER_ID"]. " </p>";
-            echo "<li><a href='include/logout.inc.php'>Log Out</a></li>";
+            echo "<li><a href='../login/logout.inc.php'>Log Out</a></li>";
         }
         else{
-            echo "<li><a href='./signup.php'>Sign Up</a></li>";
-            echo "<li><a href='./login.php'>Log In</a></li>";
+            echo "<li><a href='../register/signup.php'>Sign Up</a></li>";
+            echo "<li><a href='../login/login.php'>Log In</a></li>";
         }
         ?>
     </section>

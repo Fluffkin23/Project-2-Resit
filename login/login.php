@@ -1,3 +1,7 @@
+<?php
+include_once "../header.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +12,13 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-        include_once "header.php";
-    ?>
+
 <main class="login_container">
     <div class="login-title">
         <h1> Fantastic! Log in. </h1>
     </div>
     <div class="login-form">
-        <form action="include/login.inc.php" method="post">
+        <form action="login.inc.php" method="post">
             <div class="login-data">
                 <div class="email">
                     <label for="email">Email</label>

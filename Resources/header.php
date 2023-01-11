@@ -18,24 +18,24 @@
         <nav class="navbar">
 
             <div class="logo">
-                <img src="./res/logo.png" alt="logo">
+                <img src="../res/logo.png" alt="logo">
             </div>
 
             <ul class="nav-links">
 
                 <div class="menu">
-                    <li><a href="/contracts.html">Contracts</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/ticket.html">Ticket</a></li>
+                    <li><a href="/Contract/contracts.html">Contracts</a></li>
+                    <li><a href="/Services/services.html">Services</a></li>
+                    <li><a href="/Ticket/ticket.html">Ticket</a></li>
                     <li><a href="/contactsUs.html">Contact Us</a></li>
                     <?php
                         if (isset($_SESSION["CUSTOMER_ID"])){
                             echo "<li><a href='/profile.php'>Profile Page</a></li>";
-                            echo "<li><a href='include/logout.inc.php'>Log Out</a></li>";
+                            echo "<li><a href='../login/logout.inc.php'>Log Out</a></li>";
                         }
                         else{
-                            echo "<li><a href='./signup.php'>Sign Up</a></li>";
-                            echo "<li><a href='./login.php'>Log In</a></li>";
+                            echo "<li><a href='../register/signup.php'>Sign Up</a></li>";
+                            echo "<li><a href='../login/login.php'>Log In</a></li>";
                         }
                     ?>
 
