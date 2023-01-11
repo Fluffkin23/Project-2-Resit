@@ -149,7 +149,7 @@
         $hashedpassword = $uidExists["password"];
         $checkedPassword = password_verify($password, $hashedpassword);
 
-        if($checkedPassword === flase) {
+        if($checkedPassword === false) {
             header("location: ../login.php?error=wronglogin");
             exit();
         }
@@ -161,4 +161,3 @@
             exit();
         }
     }
-
