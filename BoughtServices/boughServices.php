@@ -1,5 +1,6 @@
 <?php
-require_once("connectionDB.php");
+require_once("showServices.php");
+require_once("connectionDB.php")
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,6 @@ require_once("connectionDB.php");
     <table>
         <tbody>
             <?php
-                get_boughtServices();
             ?>
         </tbody>
 </body>
