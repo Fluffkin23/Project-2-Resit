@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-    include_once "../header.php";
+    include_once "../Resources/header.php";
 ?>
 <div class="reg-container">
     <main class="reg">
