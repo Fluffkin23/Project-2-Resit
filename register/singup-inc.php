@@ -3,7 +3,7 @@
 
         $name = $_POST["name"];
         $email = $_POST["email"];
-        $phoneNumber = $_POST["number"];
+        $phone = $_POST["number"];
         $password = $_POST["password"];
         $rpassword = $_POST["rpassword"];
 
@@ -11,7 +11,7 @@
         require_once '../login/functions.inc.php';
 
 
-        if(emptyInputSignup( $name, $email, $phoneNumber, $password, $rpassword) !== false){
+        if(emptyInputSignup( $name, $email, $phone, $password, $rpassword) !== false){
             header("location: ../signup.php?error=emptyInput");
             exit();
         }
@@ -37,9 +37,7 @@
             exit();
         }
 
-        createUser($conn,$email, $password, $rpassword,$name,$phoneNumber);
-
-
+        createUser($conn,$email, $password,$name,$phone);
 
     }
     else{

@@ -1,7 +1,6 @@
 <?php
-include_once "../header.php";
+include_once "../Resources/header.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +17,7 @@ include_once "../header.php";
         <h1> Fantastic! Log in. </h1>
     </div>
     <div class="login-form">
-        <form action="login.inc.php" method="post">
+        <form action="login.inc.php" method="POST">
             <div class="login-data">
                 <div class="email">
                     <label for="email">Email</label>
@@ -30,7 +29,7 @@ include_once "../header.php";
                 </div>
             </div>
             <div class="submit-button">
-                <input type="submit" value="Log In">
+                <input type="submit" value="Log In" name = "submit">
             </div>
         </form>
         <?php
@@ -45,7 +44,8 @@ include_once "../header.php";
         ?>
     </div>
 </main>
-<!-- <footer class="login-footer">
+
+<!-- <footer class="login-footer">.
     <div class="footer">
     <h1>The future of change: are you ready?</h1>
 </div>
