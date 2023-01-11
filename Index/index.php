@@ -10,6 +10,7 @@
 <body>
     <?php
          include_once "../Resources/header.php";
+         print_r($_SESSION);
     ?>
     <section class="index-intro">
         <?php
