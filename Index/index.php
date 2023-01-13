@@ -1,60 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
-    <title>Document</title>
-</head>
-<body>
-    <?php
-         include_once "../Resources/header.php";
-         print_r($_SESSION);
-    ?>
-    <section class="index-intro">
+<?php
+
+    include_once '../login/header.php';
+
+?>
         <?php
-        if (isset($_SESSION["customer"])){
-            echo "<p> Hello there " . $_SESSION["CUSTOMER_ID"]. " </p>";
-            echo "<li><a href='../login/logout.inc.php'>Log Out</a></li>";
-        }
-        else{
-            echo "<li><a href='../register/signup.php'>Sign Up</a></li>";
-            echo "<li><a href='../login/login.php'>Log In</a></li>";
-        }
-        ?>
-    </section>
+         if(isset($_SESSION['sessionEmail'])) {
+             echo "You are logged in!" . $_SESSION['sessionEmail'];
+         }
+?>
+    <div class="description-box">
 
-<div class="description-box">
+            <div class="text">
+                <h1>Designed for Your Growth</h1>
 
-    <div class="text">
-        <h1>Designed for Your Growth</h1>
+                <p> We provide personalized, professional systems analysis,
+                    and computer repair and support services at your home or
+                    office.
+                </p>
 
-        <p> We provide personalized, professional systems analysis,
-            and computer repair and support services at your home or
-            office.
-        </p>
+                <p> From wireless networking to Windows desktop and server
+                    networks
+                    to Apple Mac.
+                </p>
 
-        <p> From wireless networking to Windows desktop and server
-            networks
-            to Apple Mac.
-        </p>
+                <p> We can provide expert assistance for issues such as virus
+                    removal, internet security, firewalls and online computer
+                    help.
+                </p>
+            </div>
 
-        <p> We can provide expert assistance for issues such as virus
-            removal, internet security, firewalls and online computer
-            help.
-        </p>
-    </div>
-
-    <div class="text-image">
-        <img src="/res/presentation.png" alt="support image for
+            <div class="text-image">
+                <img src="/res/presentation.png" alt="support image for
                     description text">
-    </div>
+            </div>
 
-</div>
-
-<div class="footer">
-    <h1>The future of change: are you ready?</h1>
-</div>
-</body>
-</html>
+        </div>
+<?php
+    require_once '../login/footer.php';
+?>

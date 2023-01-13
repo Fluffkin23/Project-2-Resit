@@ -1,6 +1,7 @@
 <?php
-include_once "../Resources/header.php";
+include_once '../login/header.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,19 +9,27 @@ include_once "../Resources/header.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
     <title>Document</title>
 </head>
+<<<<<<< Updated upstream
 
 <body>
 
 <<<<<<< HEAD
+=======
+
+<body>
+>>>>>>> Stashed changes
     <main class="login_container">
         <div class="login-title">
             <h1> Fantastic! Log in. </h1>
         </div>
         <div class="login-form">
+<<<<<<< Updated upstream
             <form action="login.inc.php" method="post">
+=======
+            <form action="../login/login-inc.php" method="post">
+>>>>>>> Stashed changes
                 <div class="login-data">
                     <div class="email">
                         <label for="email">Email</label>
@@ -30,6 +39,7 @@ include_once "../Resources/header.php";
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password">
                     </div>
+<<<<<<< Updated upstream
 =======
 <main class="login_container">
     <div class="login-title">
@@ -81,6 +91,15 @@ include_once "../Resources/header.php";
 </div>
 </footer> -->
 
+=======
+                </div>
+                <div class="submit-button">
+                    <input type="submit" name="submit" value="Log In">
+                </div>
+            </form>
+        </div>
+    </main>
+>>>>>>> Stashed changes
 
 </body>
 
