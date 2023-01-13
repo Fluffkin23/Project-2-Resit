@@ -1,23 +1,22 @@
 <?php
     if(isset($_POST["submit"])){
 
-        $username = $_POST["name"];
-        $surname = $_POST["surname"];
+        $name = $_POST["name"];
         $email = $_POST["email"];
         $phone = $_POST["number"];
         $password = $_POST["password"];
         $rpassword = $_POST["rpassword"];
 
-        require_once 'dbh.inc.php';
-        require_once 'functions.inc.php';
+        require_once '../login/dbh.inc.php';
+        require_once '../login/functions.inc.php';
 
 
-        if(emptyInputSignup($username, $surname, $email, $phone, $password, $rpassword) !== false){
+        if(emptyInputSignup( $name, $email, $phone, $password, $rpassword) !== false){
             header("location: ../signup.php?error=emptyInput");
             exit();
         }
 
-        if(invalidUid($username) !== false){
+        if(invalidUid($name) !== false){
             header("location: ../signup.php?error=invalidUid");
             exit();
         }
@@ -33,13 +32,12 @@
         }
 
         if(uidExists(
-            $conn, $username, $email) !== false){
+            $conn, $email) !== false){
             header("location: ../signup.php?error=usernametaken");
             exit();
         }
 
-        createUser($conn, $username, $surname, $email, $phone, $password, $rpassword);
-
+        createUser($conn,$email, $password,$name,$phone);
 
     }
     else{

@@ -12,13 +12,13 @@ include("header.php")
     <meta name="author" content="">
     <title>SB Admin - Bootstrap Admin Template</title>
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+    <link href="../css/plugins/morris.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrapper">
@@ -33,9 +33,6 @@ include("header.php")
                     <a  href="ticket_asc.php" >Ticket in Asc way </a><br>
                     <a  href="ticket_desc.php" >Ticket in Desc way </a><br>
                     <a  href="ticket.php" >All tickets </a><br>
-
-
-
                 </div>
                 <div class="row">
                     <table class="table table-hover">
@@ -51,7 +48,7 @@ include("header.php")
                         </tr>
                         </thead>
                         <tbody>
-                        <?php ticket_Desc(); ?>
+                        <?php ticket_Asc(); ?>
                         </tbody>
                     </table>
                 </div>

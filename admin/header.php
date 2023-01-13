@@ -30,23 +30,23 @@
                 <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
-                <a href="services.php"><i class="fa fa-fw fa-bar-chart-o"></i> View Services</a>
+                <a href="services/services.php"><i class="fa fa-fw fa-bar-chart-o"></i> View Services</a>
             </li>
             <li>
-                <a href="add_Service.php"><i class="fa fa-fw fa-table"></i> Add Services</a>
+                <a href="services/add_Service.php"><i class="fa fa-fw fa-table"></i> Add Services</a>
             </li>
 
             <li>
                 <a href="addAdmin.php"><i class="fa fa-fw fa-desktop"></i> Add admin</a>
             </li>
             <li>
-                <a href="ticket.php"><i class="fa fa-fw fa-wrench"></i>Tickets</a>
+                <a href="ticket/ticket.php"><i class="fa fa-fw fa-wrench"></i>Tickets</a>
             </li>
             <li>
-                <a href="users.php"><i class="fa fa-fw fa-wrench"></i>Customers</a>
+                <a href="customer/users.php"><i class="fa fa-fw fa-wrench"></i>Customers</a>
             </li>
             <li>
-                <a href="ticket.php"><i class="fa fa-fw fa-wrench"></i>Contracts</a>
+                <a href="ticket/ticket.php"><i class="fa fa-fw fa-wrench"></i>Contracts</a>
             </li>
         </ul>
     </div>

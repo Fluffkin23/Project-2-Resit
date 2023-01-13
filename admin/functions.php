@@ -71,11 +71,13 @@ function add_Admin()
         $username = $_POST['username'];
         $password = $_POST['password'];
         $usertype = "admin";
+        $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
+
 
         $sql = "INSERT INTO `login`
                         (USERNAME,PASSWORD,USERTYPE) VALUES (?,?,?)";
         if ($query = mysqli_prepare($connection, $sql)) {
-            mysqli_stmt_bind_param($query, 'sss', $username, $password, $usertype);
+            mysqli_stmt_bind_param($query, 'sss', $username, $hashedpassword, $usertype);
         }
         mysqli_stmt_execute($query);
         if ($query) {
@@ -101,7 +103,7 @@ function get_users()
                 <td>{$row['PHONE_NUMBER']}</td>
                <td> <a class='btn btn-danger' href = "delete_customer.php?delete&id={$row['CUSTOMER_ID']}"><span class='glyphicon glyphicon-remove'></span></a></td>                     
             </tr>
-    DELIMETER;
+DELIMETER;
         echo $user;
     }
 }
@@ -204,6 +206,19 @@ DELIMETER;
         echo $product;
     }
 }
+function boughtServices()
+{
+    $query = query("SELECT * FROM bought_services WHERE EMAIL =$_SESSION ");
+    while ($row = fetch_array($query)) {
+        $product = <<<DELIMETER
+<tr>
+    <td>{$row['SERVICE_ID']}</td>
+    <td>{$row['SERVICE_DESCRIPTION']}</td>
+</tr>
+DELIMETER;
+        echo $product;
+    }
+}
 
 function ticket_Desc()
 {
@@ -231,11 +246,11 @@ function ticket_Asc()
     while ($row = fetch_array($query)) {
         $product = <<<DELIMETER
 <tr>
-    <td>{$row['TICKET_ID']}</td>
     <td>{$row['CUSTOMER_ID']}</td>
-    <td>{$row['SERVICE_ID']} </td>
-    <td>{$row['SERVICE_NAME']}</td>
+    <td>{$row['TICKET_ID']}</td>
+    <td>{$row['SERVICE_ID']} </td>>
    <td>{$row['SERVICE_DESCRIPTION']}</td>
+    <td>{$row['SERVICE_NAME']}</td
       <td>{$row['DATE']}</td>
     <td>{$row['STATUS']}</td>
    <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
