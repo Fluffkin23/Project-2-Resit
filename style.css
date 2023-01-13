@@ -408,7 +408,10 @@ ul {
   background: darkblue;
   color: white;
   border-radius: 5px;
+<<<<<<< Updated upstream
   border-color: black;
+=======
+>>>>>>> Stashed changes
   border-style: solid;
   height: 30px;
   width: 190px;
@@ -417,7 +420,59 @@ ul {
   cursor: pointer;
 }
 
+.contact-section h1{
+  text-align: center;
+  color: darkblue;
+}
+.border{
+  width: 100px;
+  height: 10px;
+  background: darkblue;
+  margin: 40px auto;
+}
+
+.contact-form{
+  max-width: 600px;
+  margin: auto;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.contact-form-text{
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 16px 0;
+  border: 0;
+  background: darkblue;
+  padding: 20px 40px;
+  outline: none;
+  color: #ddd;
+  transition: 0.5s;
+}
+.contact-form-text:focus{
+  box-shadow: 0 0 10px 4px darkblue;
+}
+textarea.contact-form-text{
+  resize: none;
+  height: 120px;
+}
+.contact-form-btn{
+  float: right;
+  border: 0;
+  background: darkblue;
+  color: #fff;
+  padding: 12px 50px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.contact-form-btn:hover{
+  background: darkblue;
+}
+
 /* end contact us page */
+<<<<<<< Updated upstream
 
 /* start bought services page */
 
@@ -427,4 +482,106 @@ ul {
 
 .data-heading {
   background-color: #F4F5FF;
+=======
+.contact-section h1{
+  text-align: center;
+  color: darkblue;
+}
+.border{
+  width: 100px;
+  height: 10px;
+  background: darkblue;
+  margin: 40px auto;
+}
+
+.contact-form{
+  max-width: 600px;
+  margin: auto;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.contact-form-text{
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 16px 0;
+  border: 0;
+  background: darkblue;
+  padding: 20px 40px;
+  outline: none;
+  color: #ddd;
+  transition: 0.5s;
+}
+.contact-form-text:focus{
+  box-shadow: 0 0 10px 4px darkblue;
+}
+textarea.contact-form-text{
+  resize: none;
+  height: 120px;
+}
+.contact-form-btn{
+  float: right;
+  border: 0;
+  background: darkblue;
+  color: #fff;
+  padding: 12px 50px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.contact-form-btn:hover{
+  background: darkblue;
+}
+
+.contact-section h1{
+  text-align: center;
+  color: darkblue;
+}
+.border{
+  width: 100px;
+  height: 10px;
+  background: darkblue;
+  margin: 40px auto;
+}
+
+.contact-form{
+  max-width: 600px;
+  margin: auto;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.contact-form-text{
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 16px 0;
+  border: 0;
+  background: darkblue;
+  padding: 20px 40px;
+  outline: none;
+  color: #ddd;
+  transition: 0.5s;
+}
+.contact-form-text:focus{
+  box-shadow: 0 0 10px 4px darkblue;
+}
+textarea.contact-form-text{
+  resize: none;
+  height: 120px;
+}
+.contact-form-btn{
+  float: right;
+  border: 0;
+  background: darkblue;
+  color: #fff;
+  padding: 12px 50px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.contact-form-btn:hover{
+  background: darkblue;
+>>>>>>> Stashed changes
 }
