@@ -1,5 +1,5 @@
 <?php
-$connection = mysqli_connect("localhost","root","","service_it") or die("Connection Failed".mysqli_connect_error());
+$connection = mysqli_connect("127.0.0.1","root","","service_it") or die("Connection Failed".mysqli_connect_error());
 
 function query($sql){
     global $connection;
@@ -67,7 +67,7 @@ function add_Admin()
 {
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addAdmin'])) {
-        $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+        $connection = mysqli_connect("127.0.0.1", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
         $username = $_POST['username'];
         $password = $_POST['password'];
         $usertype = "admin";
@@ -110,7 +110,7 @@ DELIMETER;
 
 function updateService()
 {
-    $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+    $connection = mysqli_connect("127.0.01", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
     if (isset($_POST['update'])) {
         $sql = $connection-> prepare("UPDATE services SET SERVICE_NAME=? , SERVICE_DESCRIPTION=? , SERVICE_PRICE=? WHERE SERVICE_ID = ?");
         $service_name = $_POST['service_name'];
@@ -128,7 +128,7 @@ function updateService()
 
 function getStatusInProgess()
 {
-    $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+    $connection = mysqli_connect("127.0.0.1", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
 
 
     if (isset($_GET['id'])) {

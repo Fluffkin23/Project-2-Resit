@@ -132,7 +132,7 @@
 
 
             //Connect to DB and Select DB
-            if ($conn = mysqli_connect('localhost','root','')) {
+            if ($conn = mysqli_connect('127.0.0.1','root','')) {
                 mysqli_select_db($conn, 'service_it');
 
                 //Select the record with user data from DB
