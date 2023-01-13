@@ -1,6 +1,6 @@
 <?php
 
-    $serverName = "localhost";
+    $serverName = "127.0.0.1";
     $dBUsername = "root";
     $dBPassword = "";
     $dBName = "service_it";
