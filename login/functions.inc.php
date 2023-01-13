@@ -110,8 +110,6 @@
         exit();
     }
 
-
-
     function emptyInputLogin($email, $password){
         $result;
 
@@ -173,7 +171,6 @@
                         session_destroy();
                         echo "<script type='text/javascript'>alert('Incorrect Employee ID or Password');</script>";
                         echo '<script type="text/javascript">location.href = "employeeLogin.html";</script>';
-
                     }
                 } else {
                     //No employee ID found
@@ -181,7 +178,46 @@
                     echo "<script type='text/javascript'>alert('Input Employee ID does not exist. Please try again');</script>";
                     echo '<script type="text/javascript">location.href = "employeeLogin.html";</script>';
                 }
-
             } else {echo "Connection error. Try again later";}
         }
     }
+
+    function getTicketTest($conn)
+    {
+        $sql = "SELECT * FROM ticket_table WHERE STATUS = ?;";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../Resources/signup.php?error=stmtfailed");
+            exit();
+        }
+
+        $status = "DONE";
+        mysqli_stmt_bind_param($stmt, "s", $status);
+        mysqli_stmt_execute($stmt);
+
+        $resultData = mysqli_stmt_get_result($stmt);
+
+        while ($row = mysqli_fetch_assoc($resultData)) {
+            $product = <<<DELIMETER
+<tr>
+    <td>{$row['TICKET_ID']}</td>
+    <td>{$row['CUSTOMER_ID']}</td>
+    <td>{$row['SERVICE_ID']} </td>
+    <td>{$row['SERVICE_NAME']}</td>
+   <td>{$row['SERVICE_DESCRIPTION']}</td>
+      <td>{$row['DATE']}</td>
+    <td>{$row['STATUS']}</td>
+   <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+   <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+</tr>
+DELIMETER;
+            echo $product;
+        }
+
+
+        mysqli_stmt_close($stmt);
+
+    }
+
+
+    ?>

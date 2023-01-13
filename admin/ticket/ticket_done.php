@@ -1,5 +1,8 @@
 <?php
-require_once("functions.php");
+require_once("../../login/functions.inc.php");
+require_once("../../login/dbh.inc.php");
+
+
 include("header.php")
 ?>
 <!DOCTYPE html>
@@ -49,7 +52,7 @@ include("header.php")
                         </tr>
                         </thead>
                         <tbody>
-                        <?php ticket_done(); ?>
+                        <?php getTicketTest($conn); ?>
                         </tbody>
                     </table>
                 </div>

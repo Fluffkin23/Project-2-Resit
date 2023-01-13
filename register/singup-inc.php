@@ -31,8 +31,7 @@
             exit();
         }
 
-        if(uidExists(
-            $conn, $email) !== false){
+        if(uidExists($conn, $email) !== false){
             header("location: ../signup.php?error=usernametaken");
             exit();
         }
