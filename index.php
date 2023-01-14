@@ -1,6 +1,6 @@
 <?php
 
-include_once 'includes/header.php';
+include 'includes/header.php';
 
 ?>
 <?php
@@ -27,14 +27,13 @@ include_once 'includes/header.php';
                     removal, internet security, firewalls and online computer
                     help.
                 </p>
-            </div>
 
+            </div>
             <div class="text-image">
-                <img src="/res/presentation.png" alt="support image for
+                <img src="../res/presentation.png" alt="support image for
                     description text">
             </div>
-
         </div>
 <?php
-    require_once 'includes/footer.php';
+        require_once 'includes/footer.php';
 ?>
