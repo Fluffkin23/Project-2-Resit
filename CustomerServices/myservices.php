@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/header.php';
+include_once '../includes/header.php';
 
 ?>
     <div class="login-title">
@@ -15,23 +15,23 @@ include_once 'includes/header.php';
     </thead>
     <tbody>
     <?php
-    $id = $_SESSION['sessionId'];
-    $get_service_details = "Select * from contract WHERE customer_id=?";
+    $id = $_SESSION['sessionEmail'];
+    $get_service_details = "Select * from contract WHERE EMAIL=?";
     $stmt = $conn->prepare($get_service_details);
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
 
-       $contract_id = $row['contract_id'];
-       $service = $row['service_name'];
-       $email = $row['email'];
+       $contract_id = $row['CONTRACT_ID'];
+       $service = $row['SERVICE_NAME'];
+       $email = $row['EMAIL'];
 
 
        ?><tr>
         <th scope="row"><?php echo $contract_id?>
         <br><a href="order_pdf.php?id=<?php echo $contract_id?>">PDF</a></th>
-        <td><?php echo $id?><br></td>
+        <td><?php echo $row['CUSTOMER_ID']?><br></td>
         <td><?php echo $service?> </td>
         <td><?php echo $email?></td>
         </tr>
@@ -44,5 +44,5 @@ include_once 'includes/header.php';
     </tbody>
 </table>
 <?php
-require_once 'includes/footer.php';
+require_once '../includes/footer.php';
 ?>

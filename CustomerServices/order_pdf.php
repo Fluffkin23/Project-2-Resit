@@ -1,5 +1,5 @@
     <?php
-    include_once 'includes/header.php';
+    include_once '../includes/header.php';
 
     include('vendor/autoload.php');
     $html='<table class="table">
