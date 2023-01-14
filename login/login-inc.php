@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
                         session_start();
                         // $_SESSION['sessionId'] = $row['CUSTOMER_ID'];
                         $_SESSION['sessionEmail'] = $row['EMAIL'];
-                        // $_SESSION['sessionName'] = $row['NAME'];
+                        //$_SESSION['sessionName'] = $row['NAME'];
                         //$_SESSION['sessionPhone_number'] = $row['PHONE_NUMBER'];
                         echo " <script> alert('logged in!'); document.location.href = '../index.php'; </script>";
                     }

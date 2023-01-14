@@ -1,14 +1,14 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+require_once  '../vendor/autoload.php';
 
-include_once 'includes/header.php';
+include_once '../includes/header.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpMailer/Exception.php';
-require 'phpMailer/PHPMailer.php';
-require 'phpMailer/SMTP.php';
+require '../PHPMailer/Exception.php';
+require '../PHPMailer/PHPMailer.php';
+require '../PHPMailer/SMTP.php';
 
 
 if (isset($_POST['send'])) {
@@ -50,8 +50,8 @@ if (isset($_POST['send'])) {
           </script>
       ";
     } else {
-        $username = $_SESSION['sessionName'];
-        $get_user = "SELECT * from customer WHERE NAME =?";
+        $username = $_SESSION['sessionEmail'];
+        $get_user = "SELECT * from customer WHERE EMAIL =?";
         $stmt = $conn->prepare($get_user);
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -60,7 +60,7 @@ if (isset($_POST['send'])) {
             $user_id = $row['CUSTOMER_ID'];
         }
 
-        $sql = "INSERT into request_services (customer_id,service_name, customer_name) VALUES (?,?,?)";
+        $sql = "INSERT into reqeust_services (customer_id,service_name, customer_name) VALUES (?,?,?)";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("Location: services.php?error=sqlerror");
@@ -143,9 +143,9 @@ if (isset($_POST['send'])) {
 </div>
 <div class="border"></div>
 <form class="contact-form" action="services.php" method="post">
-    <input type="text" name="customer" class="contact-form-text" value="<?php echo $_SESSION['sessionName'] ?>">
+    <input type="text" name="customer" class="contact-form-text" >
     <input type="text" name="email" class="contact-form-text" value="<?php echo $_SESSION['sessionEmail'] ?>">
-    <input type="text" name="phone" class="contact-form-text" value="<?php echo $_SESSION['sessionPhone_number'] ?>">
+    <input type="text" name="phone" class="contact-form-text">
     <select name="services" class="contact-form-text">
         <option value="">--Select Services--</option>
         <option value="html">HTML</option>

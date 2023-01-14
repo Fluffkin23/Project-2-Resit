@@ -28,7 +28,7 @@
                 <?php
                 if (isset($_SESSION["sessionEmail"])) {
                     echo "<li><a href='includes/logout-inc.php'>Log Out</a></li>";
-                    echo "<li><a href='services.php'>Services</a></li>";
+                    echo "<li><a href='../CustomerServices/services.php'>Services</a></li>";
                     echo "<li><a href='myservices.php'>My Services</a></li>";
                 } else {
                     echo "<li><a href='Registration.php'>Sign Up</a></li>";
