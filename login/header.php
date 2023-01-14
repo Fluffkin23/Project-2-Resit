@@ -1,7 +1,6 @@
 <?php
     session_start();
     require_once '../login/database.php';
-    require_once '../register/register-inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
