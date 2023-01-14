@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
                 $stmt = mysqli_stmt_init($conn);
                 if (!mysqli_stmt_prepare($stmt, $sql))
                 {
-                    echo "<script> alert('sql error'); document.location.href = '/project/Registration.php'; </script> ";
+                    echo "<script> alert('sql error'); document.location.href = 'Registration.php'; </script> ";
                 }
                 else
                 {
@@ -37,7 +37,7 @@ if(isset($_POST['submit'])) {
 
                         if (!mysqli_stmt_prepare($stmt, $sql))
                         {
-                            echo "<script>alert('sql error');document.location.href = '/project/Registration.php'; </script>";
+                            echo "<script>alert('sql error');document.location.href = 'Registration.php'; </script>";
                         }
                         else
                         {
@@ -45,11 +45,11 @@ if(isset($_POST['submit'])) {
                             mysqli_stmt_bind_param($stmt, "sss", $name, $email, $phone);
                             mysqli_stmt_execute($stmt);
                             mysqli_stmt_store_result($stmt);
-                            echo "<script>alert('registered');document.location.href = '/project/Registration.php';</script>";
+                            echo "<script>alert('registered');document.location.href = '../login.php';</script>";
                         }
                         if (!mysqli_stmt_prepare($stmt2, $sql2))
                         {
-                            echo "<script>alert('sql error');document.location.href = '/project/Registration.php';</script>";
+                            echo "<script>alert('sql error');document.location.href = 'Registration.php';</script>";
                         }
                         else
                         {
@@ -57,28 +57,27 @@ if(isset($_POST['submit'])) {
                             mysqli_stmt_bind_param($stmt2, "sss", $email, $hashPass,$usertype);
                             mysqli_stmt_execute($stmt2);
                             mysqli_stmt_store_result($stmt2);
-                            echo "<script>alert('registered'); document.location.href = '/project/Registration.php'; </script>";
                         }
                     }
                     else
                     {
-                        echo " <script>alert('username and email taken');document.location.href = '/project/Registration.php';</script>";
+                        echo " <script>alert('username and email taken');document.location.href = 'Registration.php';</script>";
                     }
                 }
             }
             else
             {
-                echo " <script> alert('password do not match');document.location.href = '/project/Registration.php';</script>";
+                echo " <script> alert('password do not match');document.location.href = 'Registration.php';</script>";
             }
         }
         else
         {
-            echo "<script>alert('invalid username =' . $name);document.location.href = '/project/Registration.php';</script> ";
+            echo "<script>alert('invalid username =' . $name);document.location.href = 'Registration.php';</script> ";
         }
     }
     else
     {
-        echo "<script>alert('empty fields');document.location.href = '/project/Registration.php';</script> ";
+        echo "<script>alert('empty fields');document.location.href = 'Registration.php';</script> ";
     }
     mysqli_stmt_close($stmt);
     mysqli_close($conn);

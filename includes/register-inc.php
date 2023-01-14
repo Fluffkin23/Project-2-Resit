@@ -20,7 +20,7 @@ if(isset($_POST['submit'])) {
                     "
           <script>
           alert('sql error');
-          document.location.href = '/project/Registration.php';
+          document.location.href = '../register/Registration.php';
           </script>
       ";
                 } else {
@@ -37,7 +37,7 @@ if(isset($_POST['submit'])) {
                             "
               <script>
               alert('sql error');
-              document.location.href = '/project/Registration.php';
+              document.location.href = '../register/Registration.php';
               </script>
       ";
                         } else {
@@ -50,7 +50,7 @@ if(isset($_POST['submit'])) {
                             "
               <script>
               alert('registered');
-              document.location.href = '/project/Registration.php';
+              document.location.href = '../register/Registration.php';
               </script>
       ";
                         }
@@ -59,7 +59,7 @@ if(isset($_POST['submit'])) {
                         "
               <script>
               alert('username and email taken');
-              document.location.href = '/project/Registration.php';
+              document.location.href = '../register/Registration.php';
               </script>
       ";
                     }
@@ -70,7 +70,7 @@ if(isset($_POST['submit'])) {
                 "
           <script>
           alert('password do not match');
-          document.location.href = '/project/Registration.php';
+          document.location.href = '../register/Registration.php';
           </script>
       ";
             }
@@ -79,7 +79,7 @@ if(isset($_POST['submit'])) {
             "
           <script>
           alert('invalid username =' . $name);
-          document.location.href = '/project/Registration.php';
+          document.location.href = '../register/Registration.php';
           </script>
       ";
         }
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])) {
         "
           <script>
           alert('empty fields');
-          document.location.href = '/project/Registration.php';
+          document.location.href = '../register/Registration.php';
           </script>
       ";
     }

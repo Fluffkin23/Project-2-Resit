@@ -1,5 +1,5 @@
 <?php
-    include_once '../login/header.php';
+    include_once '../includes/header.php';
 ?>
     </header>
     <div class="reg-container">
@@ -7,7 +7,7 @@
             <div class="reg-title">
                 Ready?  Create your account.
             </div>
-            <form action="../register/register-inc.php" method="post">
+            <form action="register-inc.php" method="post">
                 <div class="reg-form">
                     <div class="reg-name">
                         <label for="name">Name</label>
