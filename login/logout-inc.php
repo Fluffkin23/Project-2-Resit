@@ -6,7 +6,7 @@ echo
 "
           <script>
           alert('logged out successfully');
-          document.location.href = '../Index/index.php';
+          document.location.href = '../index.php';
           </script>
       ";
 ?>

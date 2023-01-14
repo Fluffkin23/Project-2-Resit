@@ -26,7 +26,7 @@
                 <li><a href="contracts.php">Contracts</a></li>
                 <li><a href="ticket.html">Ticket</a></li>
                 <?php
-                if (isset($_SESSION["sessionId"])) {
+                if (isset($_SESSION["sessionEmail"])) {
                     echo "<li><a href='includes/logout-inc.php'>Log Out</a></li>";
                     echo "<li><a href='services.php'>Services</a></li>";
                     echo "<li><a href='myservices.php'>My Services</a></li>";

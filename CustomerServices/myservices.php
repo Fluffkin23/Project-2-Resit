@@ -43,8 +43,6 @@ include_once 'includes/header.php';
     ?>
     </tbody>
 </table>
-
-
 <?php
 require_once 'includes/footer.php';
 ?>
