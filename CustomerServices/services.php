@@ -60,15 +60,15 @@ if (isset($_POST['send'])) {
             $user_id = $row['CUSTOMER_ID'];
         }
 
-        $sql = "INSERT into reqeust_services (customer_id,service_name, customer_name) VALUES (?,?,?)";
-        $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
+        $sql1 = "INSERT into reqeust_services (customer_id,service_name, customer_name) VALUES (?,?,?)";
+        $stmt1 = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt1, $sql1)) {
             header("Location: services.php?error=sqlerror");
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "iss", $user_id, $services, $customer);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
+            mysqli_stmt_bind_param($stmt1, "iss", $user_id, $services, $customer);
+            mysqli_stmt_execute($stmt1);
+            mysqli_stmt_store_result($stmt1);
 
 
             $sql = "INSERT into contract (customer_id,service_name, email) VALUES (?,?,?)";
