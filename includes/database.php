@@ -2,7 +2,7 @@
 $dbHost = "localhost";
 $dbUser = "root";
 $dbPass = "";
-$dbName = "project";
+$dbName = "service_it";
 
 $conn = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
 
