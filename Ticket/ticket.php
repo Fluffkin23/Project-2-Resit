@@ -46,14 +46,13 @@ $date = date('d-m-y h:i:s');
         $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
         $description = $_POST['description'];
         $status = "NEW";
-        date_default_timezone_set("America/New_York");
 
         date('Y-m-d H:i:s', strtotime($date));
 
         $sql = "INSERT INTO `ticket_table`
                                 (EMAIL,SERVICE_NAME,SERVICE_DESCRIPTION,RECEIVE_DATE,STATUS) VALUES (?,?,?,?,?)";
         if ($query = mysqli_prepare($connection, $sql)) {
-            mysqli_stmt_bind_param($query, 'sssis', $username, $customerName, $description, $date, $status);
+            mysqli_stmt_bind_param($query, 'sssss', $username, $customerName, $description, $date, $status);
         }
         mysqli_stmt_execute($query);
         if ($query) {
