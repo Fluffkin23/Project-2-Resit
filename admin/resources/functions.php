@@ -171,12 +171,10 @@ function get_ticket()
 function ticket_done()
 {
     $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
-
     $status = "DONE";
     $sql = "SELECT * FROM ticket_table WHERE STATUS=?";
     $stmt = $connection->prepare($sql);
     $stmt->bind_param("s", $status);
-
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
@@ -200,12 +198,10 @@ function ticket_done()
 function ticket_in_progress()
 {
     $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
-
     $status = "IN PROGRESS";
     $sql = "SELECT * FROM ticket_table WHERE STATUS=?";
     $stmt = $connection->prepare($sql);
     $stmt->bind_param("s", $status);
-
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
@@ -228,16 +224,20 @@ function ticket_in_progress()
 
 function ticket_Desc()
 {
-    $query = query("SELECT * FROM ticket_table ORDER BY date(DATE) DESC");
-    while ($row = fetch_array($query)) {
+    $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+    $sql = "SELECT * FROM ticket_table ORDER BY date(DATE) DESC";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
         $product = <<<DELIMETER
             <tr>
                 <td>{$row['TICKET_ID']}</td>
                 <td>{$row['CUSTOMER_ID']}</td>
                 <td>{$row['SERVICE_ID']} </td>
                 <td>{$row['SERVICE_NAME']}</td>
-               <td>{$row['SERVICE_DESCRIPTION']}</td> 
-                  <td>{$row['DATE']}</td> 
+               <td>{$row['SERVICE_DESCRIPTION']}</td>
+                  <td>{$row['DATE']}</td>
                 <td>{$row['STATUS']}</td>
                <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
                <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
@@ -249,21 +249,25 @@ function ticket_Desc()
 
 function ticket_Asc()
 {
-    $query = query("SELECT * FROM ticket_table ORDER BY date(DATE) ASC");
-    while ($row = fetch_array($query)) {
+    $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+    $sql = "SELECT * FROM ticket_table ORDER BY date(DATE) ASC";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
         $product = <<<DELIMETER
-<tr>
-    <td>{$row['TICKET_ID']}</td>
-    <td>{$row['CUSTOMER_ID']}</td>
-    <td>{$row['SERVICE_ID']} </td>
-   <td>{$row['SERVICE_NAME']}</td>
-    <td>{$row['SERVICE_DESCRIPTION']}</td>
-    <td>{$row['DATE']}</td>
-    <td>{$row['STATUS']}</td>
-   <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
-   <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
-</tr>
-DELIMETER;
+            <tr>
+                <td>{$row['TICKET_ID']}</td>
+                <td>{$row['CUSTOMER_ID']}</td>
+                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['SERVICE_NAME']}</td>
+               <td>{$row['SERVICE_DESCRIPTION']}</td>
+                  <td>{$row['DATE']}</td>
+                <td>{$row['STATUS']}</td>
+               <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+               <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+            </tr>
+            DELIMETER;
         echo $product;
     }
 }
