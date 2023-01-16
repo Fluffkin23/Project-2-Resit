@@ -22,7 +22,7 @@
                     <input type="password" placeholder="enter your password" name="password" id="password">
                 </div>
                 <div class="reg-surname">
-                    <label for="password">Password</label>
+                    <label for="password">re-type password</label>
                     <input type="password" placeholder="enter your password" name="confirmPassword" id="password">
                 </div>
                 <div class="reg-phone">
