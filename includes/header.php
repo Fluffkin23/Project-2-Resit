@@ -23,6 +23,7 @@ require_once 'database.php';
 
         <div class="menu">
             <li><a href="../Index/index.php">Home</a></li>
+            <li><a href="../CustomerServices/showServices.php">Services</a></li>
             <?php
             if (isset($_SESSION["sessionEmail"])) {
                 echo "<li><a href='../login/logout-inc.php'>Log Out</a></li>";
