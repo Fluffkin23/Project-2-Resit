@@ -1,5 +1,7 @@
 <?php session_start();
-echo $_SESSION['sessionEmail'] ?>
+echo $_SESSION['sessionEmail'];
+$date = date('d-m-y h:i:s');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="/style.css">
@@ -42,11 +44,10 @@ echo $_SESSION['sessionEmail'] ?>
         $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
         $description = $_POST['description'];
         $status = "NEW";
-        $date = date("Y-m-d");
-        $_POST['date'] = $date;
+        $date = date('y-m-d h:i:s');
 
         $sql = "INSERT INTO `ticket_table`
-                                (EMAIL,SERVICE_NAME,SERVICE_DESCRIPTION,DATE,STATUS) VALUES (?,?,?,?,?)";
+                                (EMAIL,SERVICE_NAME,SERVICE_DESCRIPTION,RECEIVE_DATE,STATUS) VALUES (?,?,?,?,?)";
         if ($query = mysqli_prepare($connection, $sql)) {
             mysqli_stmt_bind_param($query, 'sssis', $username, $customerName, $description, $date, $status);
         }
