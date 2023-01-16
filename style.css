@@ -196,11 +196,13 @@ li {
 }
 
 .reg {
-  display: grid;
-  grid-template-rows: 10vh 30vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .reg-title {
+  display: flex;
+  justify-content: center;
   color: #2F1C6A;
   font-weight: bold;
   text-align: center;
@@ -208,33 +210,49 @@ li {
 }
 
 .reg-form {
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
   font-size: 1.4rem;
   font-weight: bolder;
   color: #2F1C6A;
-  margin-left: 20vw;
+  margin-left: 2vw;
+}
+
+.reg-form label {
+  display: block;
+  text-align: center;
 }
 
 .reg-name input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
   width: 15vw;
   padding: 0.5vw;
   border-radius: 1.5rem;
   background: #2F1C6A;
-  margin-left: 2.5vw;
   color: white;
 }
 
 .reg-email input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
   width: 15vw;
   padding: 0.5vw;
   border-radius: 1.5rem;
   background: #2F1C6A;
-  margin-left: 7vw;
   color: white;
 }
 
 .reg-surname input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
   width: 15vw;
   padding: 0.5vw;
   border-radius: 1.5rem;
@@ -243,6 +261,10 @@ li {
 }
 
 .reg-phone input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
   width: 15vw;
   padding: 0.5vw;
   border-radius: 1.5rem;
@@ -251,12 +273,19 @@ li {
 }
 
 .reg-submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   text-align: center;
   margin-top: 7vh;
 
 }
 
 .reg-submit input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
   color: #fff;
   font-weight: bold;
   width: 15vw;
@@ -267,6 +296,10 @@ li {
 }
 
 .reg-password input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
   color: #fff;
   font-weight: bold;
   width: 15vw;
@@ -290,54 +323,68 @@ li {
 
 /* Start Login Page */
 .login-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
   color: #2F1C6A;
   font-weight: bold;
   text-align: center;
   font-size: 1.5rem;
 }
 
-.login_container {
-  display: grid;
-  grid-template-rows: 20vh 20vh;
-}
-
 .login-data {
-  display: grid;
-  grid-template-columns: 40vw 40vw;
-  padding-left: 10vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 1.4rem;
+  font-weight: bolder;
+  color: #2F1C6A;
 }
 
 .email {
-  float: left;
+  display: block;
+  text-align: center;
   color: #2F1C6A;
   font-size: 1.5rem;
 }
 
 .email input {
-  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  width: 80%;
   padding: 1rem;
   border-radius: 1.5rem;
   background: #2F1C6A;
-  margin-left: 2vw;
 }
 
 .password {
-  float: left;
+  display: block;
+  text-align: center;
   color: #2F1C6A;
   font-size: 1.5rem;
 }
 
 .password input {
-  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  width: 80%;
   padding: 1rem;
   border-radius: 1.5rem;
   background: #2F1C6A;
-  margin-left: 2vw;
 }
 
 .submit-button input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
   border-radius: 2rem;
-  width: 20rem;
+  width: 10rem;
   padding: 1rem;
   font-size: 1.3rem;
   color: #fff;
@@ -345,9 +392,15 @@ li {
 }
 
 .submit-button {
-  margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  display: grid;
+  text-align: center;
+}
+
+.login-data label {
+  display: block;
+  text-align: center;
 }
 
 /* End Login Page */
@@ -408,11 +461,8 @@ ul {
   background: darkblue;
   color: white;
   border-radius: 5px;
-<<<<<<< Updated upstream
-  border-color: black;
-=======
->>>>>>> Stashed changes
-  border-style: solid;
+  <<<<<<< Updated upstream border-color: black;
+  =======>>>>>>>Stashed changes border-style: solid;
   height: 30px;
   width: 190px;
   font-size: medium;
@@ -420,25 +470,26 @@ ul {
   cursor: pointer;
 }
 
-.contact-section h1{
+.contact-section h1 {
   text-align: center;
   color: darkblue;
 }
-.border{
+
+.border {
   width: 100px;
   height: 10px;
   background: darkblue;
   margin: 40px auto;
 }
 
-.contact-form{
+.contact-form {
   max-width: 600px;
   margin: auto;
   padding: 0 10px;
   overflow: hidden;
 }
 
-.contact-form-text{
+.contact-form-text {
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -450,14 +501,17 @@ ul {
   color: #ddd;
   transition: 0.5s;
 }
-.contact-form-text:focus{
+
+.contact-form-text:focus {
   box-shadow: 0 0 10px 4px darkblue;
 }
-textarea.contact-form-text{
+
+textarea.contact-form-text {
   resize: none;
   height: 120px;
 }
-.contact-form-btn{
+
+.contact-form-btn {
   float: right;
   border: 0;
   background: darkblue;
@@ -467,12 +521,12 @@ textarea.contact-form-text{
   cursor: pointer;
   transition: 0.5s;
 }
-.contact-form-btn:hover{
+
+.contact-form-btn:hover {
   background: darkblue;
 }
 
 /* end contact us page */
-<<<<<<< Updated upstream
 
 /* start bought services page */
 
@@ -482,106 +536,115 @@ textarea.contact-form-text{
 
 .data-heading {
   background-color: #F4F5FF;
-=======
-.contact-section h1{
-  text-align: center;
-  color: darkblue;
-}
-.border{
-  width: 100px;
-  height: 10px;
-  background: darkblue;
-  margin: 40px auto;
-}
 
-.contact-form{
-  max-width: 600px;
-  margin: auto;
-  padding: 0 10px;
-  overflow: hidden;
-}
+  .contact-section h1 {
+    text-align: center;
+    color: darkblue;
+  }
 
-.contact-form-text{
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 16px 0;
-  border: 0;
-  background: darkblue;
-  padding: 20px 40px;
-  outline: none;
-  color: #ddd;
-  transition: 0.5s;
-}
-.contact-form-text:focus{
-  box-shadow: 0 0 10px 4px darkblue;
-}
-textarea.contact-form-text{
-  resize: none;
-  height: 120px;
-}
-.contact-form-btn{
-  float: right;
-  border: 0;
-  background: darkblue;
-  color: #fff;
-  padding: 12px 50px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.5s;
-}
-.contact-form-btn:hover{
-  background: darkblue;
-}
+  .border {
+    width: 100px;
+    height: 10px;
+    background: darkblue;
+    margin: 40px auto;
+  }
 
-.contact-section h1{
-  text-align: center;
-  color: darkblue;
-}
-.border{
-  width: 100px;
-  height: 10px;
-  background: darkblue;
-  margin: 40px auto;
-}
+  .contact-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 0 10px;
+    overflow: hidden;
+  }
 
-.contact-form{
-  max-width: 600px;
-  margin: auto;
-  padding: 0 10px;
-  overflow: hidden;
-}
+  .contact-form-text {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 16px 0;
+    border: 0;
+    background: darkblue;
+    padding: 20px 40px;
+    outline: none;
+    color: #ddd;
+    transition: 0.5s;
+  }
 
-.contact-form-text{
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 16px 0;
-  border: 0;
-  background: darkblue;
-  padding: 20px 40px;
-  outline: none;
-  color: #ddd;
-  transition: 0.5s;
-}
-.contact-form-text:focus{
-  box-shadow: 0 0 10px 4px darkblue;
-}
-textarea.contact-form-text{
-  resize: none;
-  height: 120px;
-}
-.contact-form-btn{
-  float: right;
-  border: 0;
-  background: darkblue;
-  color: #fff;
-  padding: 12px 50px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.5s;
-}
-.contact-form-btn:hover{
-  background: darkblue;
->>>>>>> Stashed changes
-}
+  .contact-form-text:focus {
+    box-shadow: 0 0 10px 4px darkblue;
+  }
+
+  textarea.contact-form-text {
+    resize: none;
+    height: 120px;
+  }
+
+  .contact-form-btn {
+    float: right;
+    border: 0;
+    background: darkblue;
+    color: #fff;
+    padding: 12px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  .contact-form-btn:hover {
+    background: darkblue;
+  }
+
+  .contact-section h1 {
+    text-align: center;
+    color: darkblue;
+  }
+
+  .border {
+    width: 100px;
+    height: 10px;
+    background: darkblue;
+    margin: 40px auto;
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 0 10px;
+    overflow: hidden;
+  }
+
+  .contact-form-text {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 16px 0;
+    border: 0;
+    background: darkblue;
+    padding: 20px 40px;
+    outline: none;
+    color: #ddd;
+    transition: 0.5s;
+  }
+
+  .contact-form-text:focus {
+    box-shadow: 0 0 10px 4px darkblue;
+  }
+
+  textarea.contact-form-text {
+    resize: none;
+    height: 120px;
+  }
+
+  .contact-form-btn {
+    float: right;
+    border: 0;
+    background: darkblue;
+    color: #fff;
+    padding: 12px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  .contact-form-btn:hover {
+    background: darkblue;
+  }
