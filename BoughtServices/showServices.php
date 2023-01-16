@@ -10,7 +10,7 @@ include_once '../includes/header.php';
         <th scope="col">Contract_id</th>
         <th scope="col">Customer_id</th>
         <th scope="col">Service name</th>
-        <th scope="col">Email</th>
+        <th scope="col">Price</th>
     </tr>
     </thead>
     <tbody>
