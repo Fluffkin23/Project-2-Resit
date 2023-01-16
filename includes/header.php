@@ -28,6 +28,7 @@ require_once 'database.php';
                 echo "<li><a href='../login/logout-inc.php'>Log Out</a></li>";
                 echo "<li><a href='../CustomerServices/services.php'>Services</a></li>";
                 echo "<li><a href='../CustomerServices/myservices.php'>My Services</a></li>";
+                echo "<li><a href='../Ticket/ticket.php'>My Tickets</a></li>";
             } else {
                 echo "<li><a href='Registration.php'>Sign Up</a></li>";
                 echo "<li><a href='../login/login.php'>Log in</a></li>";
