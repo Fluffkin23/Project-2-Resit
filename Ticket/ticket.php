@@ -16,12 +16,11 @@ require_once("connectionDB.php");
 
 <body>
 
-    <form action="" method="POST">
+<form action="" method="POST">
 
-        <select name="services" id="services">
+    <select name="services" id="services">
 
-            <?php
-
+        <?php
 
         $sql = "SELECT SERVICE_NAME FROM request_services";
         $result = mysqli_query($connection, $sql);
@@ -32,57 +31,55 @@ require_once("connectionDB.php");
         }
         ?>
 
-        </select>
-        <input type="text" name="description" placeholder="Description">
-        <input type="submit" name="submit" value="Submit">
+    </select>
+    <input type="text" name="description" placeholder="Description">
+    <input type="submit" name="submit" value="Submit">
 
-    </form>
+</form>
 
-    <?php
+<?php
 
 
+if (isset($_POST['submit'])) {
+    $serviceName = $_POST['services'];
+    $description = $_POST['description'];
 
-    if (isset($_POST['submit'])) {
-        $serviceName = $_POST['services'];
-        $description = $_POST['description'];
-
-        $sql = "INSERT INTO ticket_table (SERVICE_NAME, SERVICE_DESCRIPTION) VALUES ('$serviceName', '$description')" or die(mysqli_error($db));
-        $result = mysqli_query($connection, $sql) or trigger_error("Query Failed! SQL: $sql - Error: " . mysqli_error($connection), E_USER_ERROR);
-        if (!$result) {
-            die('Query FAILED' . mysqli_error($connection));
-        } else {
-            echo '<script type="text/javascript">
+    $sql = "INSERT INTO ticket_table (SERVICE_NAME, SERVICE_DESCRIPTION) VALUES ('$serviceName', '$description')" or die(mysqli_error($db));
+    $result = mysqli_query($connection, $sql) or trigger_error("Query Failed! SQL: $sql - Error: " . mysqli_error($connection), E_USER_ERROR);
+    if (!$result) {
+        die('Query FAILED' . mysqli_error($connection));
+    } else {
+        echo '<script type="text/javascript">
             window.onload = function () { alert("Record created!"); } 
         </script>';
-        }
     }
+}
 
 
+//get results from database
+$result = mysqli_query($connection, "SELECT * FROM ticket_table");
+$all_property = array(); //declare an array for saving property
 
-    //get results from database
-    $result = mysqli_query($connection, "SELECT * FROM ticket_table");
-    $all_property = array(); //declare an array for saving property
-
-    //showing property
-    echo '<table class="data-table">
+//showing property
+echo '<table class="data-table">
         <tr class="data-heading">'; //initialize table tag
-            while ($property = mysqli_fetch_field($result)) {
-            echo '<td class=tdStyle>' . $property->name . '</td>'; //get field name for header
-            $all_property[] = $property->name; //save those to array
-            }
-            echo '</tr>'; //end tr tag
+while ($property = mysqli_fetch_field($result)) {
+    echo '<td class=tdStyle>' . $property->name . '</td>'; //get field name for header
+    $all_property[] = $property->name; //save those to array
+}
+echo '</tr>'; //end tr tag
 
-        //showing all data
-        while ($row = mysqli_fetch_array($result)) {
-        echo "<tr>";
-            foreach ($all_property as $item) {
-            echo '<td>' . $row[$item] . '</td>'; //get items using property value
-            }
-            echo '</tr>';
-        }
-        echo "
+//showing all data
+while ($row = mysqli_fetch_array($result)) {
+    echo "<tr>";
+    foreach ($all_property as $item) {
+        echo '<td>' . $row[$item] . '</td>'; //get items using property value
+    }
+    echo '</tr>';
+}
+echo "
     </table>";
-    ?>
+?>
 </body>
 
 </html>
