@@ -146,11 +146,21 @@ if (isset($_POST['send'])) {
     <input type="text" name="email" class="contact-form-text" value="<?php echo $_SESSION['sessionEmail'] ?>">
     <input type="text" name="phone" class="contact-form-text">
     <select name="services" class="contact-form-text">
-        <option value="">--Select Services--</option>
-        <option value="html">HTML</option>
-        <option value="php">PHP</option>
-        <option value="javascript">JAVASCRIPT</option>
-        <option value="java">JAVA PROGRAMMING</option>
+        <?php
+        $get_services = "Select SERVICE_NAME from services ";
+        $stmt = $conn->prepare($get_services);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $services=$row['SERVICE_NAME'];
+
+            ?><option><?php echo $services?></option>
+            <?php
+        }
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
+
+        ?>
     </select>
     <input type="submit" name="send" class="contact-form-btn" value="Send">
 </form>
