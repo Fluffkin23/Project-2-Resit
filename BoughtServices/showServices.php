@@ -1,26 +1,46 @@
 <?php
+include_once '../includes/header.php';
 
-include "connectionDB.php";
-    
-//get results from database
-$result = mysqli_query($connection, "SELECT * FROM bought_services");
-$all_property = array();  //declare an array for saving property
+?>
+    <div class="login-title">
+        <h1> All Services </h1>
+    </div><table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Contract_id</th>
+        <th scope="col">Customer_id</th>
+        <th scope="col">Service name</th>
+        <th scope="col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    $get_service_details = "Select * from services ";
+    $stmt = $conn->prepare($get_service_details);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
 
-//showing property
-echo '<table class="data-table">
-        <tr class="data-heading">';  //initialize table tag
-while ($property = mysqli_fetch_field($result)) {
-    echo '<td class=tdStyle>' . $property->name . '</td>';  //get field name for header
-    $all_property[] = $property->name;  //save those to array
-}
-echo '</tr>'; //end tr tag
+        $contract_id = $row['ID'];
+        $service = $row['SERVICE_NAME'];
+        $service_desc=$row['SERVICE_DESCRIPTION'];
+        $service_price=$row['SERVICE_PRICE'];
 
-//showing all data
-while ($row = mysqli_fetch_array($result)) {
-    echo "<tr>";
-    foreach ($all_property as $item) {
-        echo '<td>' . $row[$item] . '</td>'; //get items using property value
+
+        ?><tr>
+        <th scope="row"><?php echo $contract_id?>
+        <td><?php echo $service?><br></td>
+        <td><?php echo $service_desc?> </td>
+        <td><?php echo $service_price?></td>
+        </tr>
+        <?php
     }
-    echo '</tr>';
-}
-echo "</table>";
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+
+    ?>
+    </tbody>
+</table>
+<?php
+require_once '../includes/footer.php';
+?>
