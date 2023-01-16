@@ -154,11 +154,10 @@ function get_ticket()
         $product = <<<DELIMETER
             <tr>
                 <td>{$row['TICKET_ID']}</td>
-                <td>{$row['CUSTOMER_ID']}</td>
-                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['EMAIL']} </td>
                 <td>{$row['SERVICE_NAME']}</td>
                <td>{$row['SERVICE_DESCRIPTION']}</td>
-                  <td>{$row['DATE']}</td>
+                  <td>{$row['RECEIVE_DATE']}</td>
                 <td>{$row['STATUS']}</td>
                <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
                <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
@@ -200,11 +199,10 @@ function ticket_done()
         $product = <<<DELIMETER
             <tr>
                 <td>{$row['TICKET_ID']}</td>
-                <td>{$row['CUSTOMER_ID']}</td>
-                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['EMAIL']} </td>
                 <td>{$row['SERVICE_NAME']}</td>
                <td>{$row['SERVICE_DESCRIPTION']}</td>
-                  <td>{$row['DATE']}</td>
+                  <td>{$row['RECEIVE_DATE']}</td>
                 <td>{$row['STATUS']}</td>
                <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
                <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
@@ -227,11 +225,10 @@ function ticket_in_progress()
         $product = <<<DELIMETER
             <tr>
                 <td>{$row['TICKET_ID']}</td>
-                <td>{$row['CUSTOMER_ID']}</td>
-                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['EMAIL']} </td>
                 <td>{$row['SERVICE_NAME']}</td>
                <td>{$row['SERVICE_DESCRIPTION']}</td>
-                  <td>{$row['DATE']}</td>
+                  <td>{$row['RECEIVE_DATE']}</td>
                 <td>{$row['STATUS']}</td>
                <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
                <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
@@ -244,7 +241,7 @@ function ticket_in_progress()
 function ticket_Desc()
 {
     $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
-    $sql = "SELECT * FROM ticket_table ORDER BY date(DATE) DESC";
+    $sql = "SELECT * FROM ticket_table ORDER BY date(RECEIVE_DATE) DESC";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -252,11 +249,10 @@ function ticket_Desc()
         $product = <<<DELIMETER
             <tr>
                 <td>{$row['TICKET_ID']}</td>
-                <td>{$row['CUSTOMER_ID']}</td>
-                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['EMAIL']} </td>
                 <td>{$row['SERVICE_NAME']}</td>
                <td>{$row['SERVICE_DESCRIPTION']}</td>
-                  <td>{$row['DATE']}</td>
+                  <td>{$row['RECEIVE_DATE']}</td>
                 <td>{$row['STATUS']}</td>
                <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
                <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
@@ -269,7 +265,7 @@ function ticket_Desc()
 function ticket_Asc()
 {
     $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
-    $sql = "SELECT * FROM ticket_table ORDER BY date(DATE) ASC";
+    $sql = "SELECT * FROM ticket_table ORDER BY date(RECEIVE_DATE) ASC";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -277,11 +273,10 @@ function ticket_Asc()
         $product = <<<DELIMETER
             <tr>
                 <td>{$row['TICKET_ID']}</td>
-                <td>{$row['CUSTOMER_ID']}</td>
-                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['EMAIL']} </td>
                 <td>{$row['SERVICE_NAME']}</td>
                <td>{$row['SERVICE_DESCRIPTION']}</td>
-                  <td>{$row['DATE']}</td>
+                  <td>{$row['RECEIVE_DATE']}</td>
                 <td>{$row['STATUS']}</td>
                <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
                <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
@@ -305,11 +300,10 @@ function ticket_new()
         $product = <<<DELIMETER
             <tr>
                 <td>{$row['TICKET_ID']}</td>
-                <td>{$row['CUSTOMER_ID']}</td>
-                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['EMAIL']} </td>
                 <td>{$row['SERVICE_NAME']}</td>
                <td>{$row['SERVICE_DESCRIPTION']}</td>
-                  <td>{$row['DATE']}</td>
+                  <td>{$row['RECEIVE_DATE']}</td>
                 <td>{$row['STATUS']}</td>
                <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
                <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
