@@ -223,7 +223,7 @@ final class BackgroundWriter
 
 	public function writeShaders() // _putshaders
 	{
-		$maxid = count($this->mpdf->gradients); // index for transparency gradients
+		$maxid = count($this->mpdf->gradients); // indexAdmin for transparency gradients
 
 		foreach ($this->mpdf->gradients as $id => $grad) {
 

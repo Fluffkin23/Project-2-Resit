@@ -1,6 +1,6 @@
 <?php
-require_once("functions.php");
-include("header.php")
+require_once("../resources/functions.php");
+include("../resources/header.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">

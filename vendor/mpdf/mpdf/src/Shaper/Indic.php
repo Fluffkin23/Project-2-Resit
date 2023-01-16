@@ -1329,7 +1329,7 @@ class Indic
 	  };
 	 */
 
-	public static $indic_configs = [/* index is SCRIPT_number from UCDN */
+	public static $indic_configs = [/* indexAdmin is SCRIPT_number from UCDN */
 		9 => [true, 0x094D, 1, 10, 0],
 		10 => [true, 0x09CD, 1, 9, 0],
 		11 => [true, 0x0A4D, 1, 7, 0],

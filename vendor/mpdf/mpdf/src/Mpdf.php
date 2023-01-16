@@ -1255,7 +1255,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 		$this->encrypted = false;
 
 		$this->BMoutlines = [];
-		$this->ColActive = 0;          // Flag indicating that columns are on (the index is being processed)
+		$this->ColActive = 0;          // Flag indicating that columns are on (the indexAdmin is being processed)
 		$this->Reference = [];    // Array containing the references
 		$this->CurrCol = 0;               // Current column number
 		$this->ColL = [0];   // Array of Left pos of columns - absolute - needs Margin correction for Odd-Even
@@ -2338,9 +2338,9 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 
 				if ((!isset($pb['image_id']) && !isset($pb['gradient'])) || isset($pb['shadowonly'])) { // Background colour or boxshadow
 
-					if ($pb['z-index'] > 0) {
-						$this->current_layer = $pb['z-index'];
-						$s .= "\n" . '/OCBZ-index /ZI' . $pb['z-index'] . ' BDC' . "\n";
+					if ($pb['z-indexAdmin'] > 0) {
+						$this->current_layer = $pb['z-indexAdmin'];
+						$s .= "\n" . '/OCBZ-indexAdmin /ZI' . $pb['z-indexAdmin'] . ' BDC' . "\n";
 					}
 
 					if ($pb['visibility'] != 'visible') {
@@ -2380,8 +2380,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 						$s .= 'EMC' . "\n";
 					}
 
-					if ($pb['z-index'] > 0) {
-						$s .= "\n" . 'EMCBZ-index' . "\n";
+					if ($pb['z-indexAdmin'] > 0) {
+						$s .= "\n" . 'EMCBZ-indexAdmin' . "\n";
 						$this->current_layer = 0;
 					}
 				}
@@ -2392,9 +2392,9 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 
 				if ((isset($pb['gradient']) && $pb['gradient']) || (isset($pb['image_id']) && $pb['image_id'])) {
 
-					if ($pb['z-index'] > 0) {
-						$this->current_layer = $pb['z-index'];
-						$s .= "\n" . '/OCGZ-index /ZI' . $pb['z-index'] . ' BDC' . "\n";
+					if ($pb['z-indexAdmin'] > 0) {
+						$this->current_layer = $pb['z-indexAdmin'];
+						$s .= "\n" . '/OCGZ-indexAdmin /ZI' . $pb['z-indexAdmin'] . ' BDC' . "\n";
 					}
 
 					if ($pb['visibility'] != 'visible') {
@@ -2581,8 +2581,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 						$s .= 'EMC' . "\n";
 					}
 
-					if ($pb['z-index'] > 0) {
-						$s .= "\n" . 'EMCGZ-index' . "\n";
+					if ($pb['z-indexAdmin'] > 0) {
+						$s .= "\n" . 'EMCGZ-indexAdmin' . "\n";
 						$this->current_layer = 0;
 					}
 				}
@@ -2790,7 +2790,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 			}
 		}
 		$this->current_layer = $id;
-		$this->writer->write('/OCZ-index /ZI' . $id . ' BDC');
+		$this->writer->write('/OCZ-indexAdmin /ZI' . $id . ' BDC');
 
 		$this->pageoutput[$this->page] = [];
 	}
@@ -2798,7 +2798,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 	function EndLayer()
 	{
 		if ($this->current_layer > 0) {
-			$this->writer->write('EMCZ-index');
+			$this->writer->write('EMCZ-indexAdmin');
 			$this->current_layer = 0;
 		}
 	}
@@ -3137,8 +3137,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 			}
 			$sy = $this->y;
 			for ($bl = 1; $bl <= $toplvl; $bl++) {
-				if (isset($this->blk[$bl]['z-index']) && $this->blk[$bl]['z-index'] > 0) {
-					$this->BeginLayer($this->blk[$bl]['z-index']);
+				if (isset($this->blk[$bl]['z-indexAdmin']) && $this->blk[$bl]['z-indexAdmin'] > 0) {
+					$this->BeginLayer($this->blk[$bl]['z-indexAdmin']);
 				}
 				if (isset($this->blk[$bl]['visibility']) && $this->blk[$bl]['visibility'] && $this->blk[$bl]['visibility'] != 'visible') {
 					$this->SetVisibility($this->blk[$bl]['visibility']);
@@ -7230,8 +7230,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 				if (isset($objattr['transform'])) {
 					$this->writer->write("\n" . '% BTR'); // Begin Transform
 				}
-				if (isset($objattr['z-index']) && $objattr['z-index'] > 0 && $this->current_layer == 0) {
-					$this->BeginLayer($objattr['z-index']);
+				if (isset($objattr['z-indexAdmin']) && $objattr['z-indexAdmin'] > 0 && $this->current_layer == 0) {
+					$this->BeginLayer($objattr['z-indexAdmin']);
 				}
 				if (isset($objattr['visibility']) && $objattr['visibility'] != 'visible' && $objattr['visibility']) {
 					$this->SetVisibility($objattr['visibility']);
@@ -7413,7 +7413,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 				if (isset($objattr['visibility']) && $objattr['visibility'] != 'visible' && $objattr['visibility']) {
 					$this->SetVisibility('visible');
 				}
-				if (isset($objattr['z-index']) && $objattr['z-index'] > 0 && $this->current_layer == 0) {
+				if (isset($objattr['z-indexAdmin']) && $objattr['z-indexAdmin'] > 0 && $this->current_layer == 0) {
 					$this->EndLayer();
 				}
 				// mPDF 5.7.3 TRANSFORMS
@@ -10027,9 +10027,9 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 
 		if (count($this->layers)) {
 			foreach ($this->pages as $pn => $page) {
-				preg_match_all('/\/OCZ-index \/ZI(\d+) BDC(.*?)(EMCZ)-index/is', $this->pages[$pn], $m1);
-				preg_match_all('/\/OCBZ-index \/ZI(\d+) BDC(.*?)(EMCBZ)-index/is', $this->pages[$pn], $m2);
-				preg_match_all('/\/OCGZ-index \/ZI(\d+) BDC(.*?)(EMCGZ)-index/is', $this->pages[$pn], $m3);
+				preg_match_all('/\/OCZ-indexAdmin \/ZI(\d+) BDC(.*?)(EMCZ)-indexAdmin/is', $this->pages[$pn], $m1);
+				preg_match_all('/\/OCBZ-indexAdmin \/ZI(\d+) BDC(.*?)(EMCBZ)-indexAdmin/is', $this->pages[$pn], $m2);
+				preg_match_all('/\/OCGZ-indexAdmin \/ZI(\d+) BDC(.*?)(EMCGZ)-indexAdmin/is', $this->pages[$pn], $m3);
 				$m = [];
 				for ($i = 0; $i < 4; $i++) {
 					$m[$i] = array_merge($m1[$i], $m2[$i], $m3[$i]);
@@ -10050,8 +10050,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 						$this->pages[$pn] = str_replace($m[0][$i], '', $this->pages[$pn]);
 						$this->pages[$pn] .= "\n" . $m[0][$i] . "\n";
 					}
-					$this->pages[$pn] = preg_replace('/\/OC[BG]{0,1}Z-index \/ZI(\d+) BDC/is', '/OC /ZI\\1 BDC ', $this->pages[$pn]);
-					$this->pages[$pn] = preg_replace('/EMC[BG]{0,1}Z-index/is', 'EMC', $this->pages[$pn]);
+					$this->pages[$pn] = preg_replace('/\/OC[BG]{0,1}Z-indexAdmin \/ZI(\d+) BDC/is', '/OC /ZI\\1 BDC ', $this->pages[$pn]);
+					$this->pages[$pn] = preg_replace('/EMC[BG]{0,1}Z-indexAdmin/is', 'EMC', $this->pages[$pn]);
 				}
 			}
 		}
@@ -11208,7 +11208,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 		$boxLineHeight = $this->_computeLineheight($CSSlineheight, $fontsize);
 
 
-		// First, set a "strut" using block font at index $lineBox[-1]
+		// First, set a "strut" using block font at indexAdmin $lineBox[-1]
 		$ypos[-1] = $this->_setLineYpos($fontsize, $fontdesc, $CSSlineheight);
 
 		// for the block element - always taking the block EXTENDED progression including leading - which may be negative
@@ -14148,7 +14148,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 				$css .= 'color: ' . strtolower($p['COLOR']) . '; ';
 			}
 			if (isset($p['Z-INDEX'])) {
-				$css .= 'z-index: ' . $p['Z-INDEX'] . '; ';
+				$css .= 'z-indexAdmin: ' . $p['Z-INDEX'] . '; ';
 			}
 			if ($css) {
 				$html = '<div style="' . $css . '">' . $html . '</div>';
@@ -17636,7 +17636,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 				'clippath' => $s,
 				'visibility' => $this->visibility,
 				'shadow' => $shadow,
-				'z-index' => $this->current_layer,
+				'z-indexAdmin' => $this->current_layer,
 			];
 		} elseif ($shadow) {
 			$this->pageBackgrounds[$blvl][] = [
@@ -17649,7 +17649,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 				'clippath' => '',
 				'visibility' => $this->visibility,
 				'shadow' => $shadow,
-				'z-index' => $this->current_layer,
+				'z-indexAdmin' => $this->current_layer,
 			];
 		}
 
@@ -17672,7 +17672,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 					'extend' => $g['extend'],
 					'clippath' => $s,
 					'visibility' => $this->visibility,
-					'z-index' => $this->current_layer
+					'z-indexAdmin' => $this->current_layer
 				];
 			}
 		}
@@ -17742,7 +17742,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 						'extend' => $g['extend'],
 						'clippath' => $s,
 						'visibility' => $this->visibility,
-						'z-index' => $this->current_layer
+						'z-indexAdmin' => $this->current_layer
 					];
 				}
 
@@ -17814,7 +17814,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 					'opacity' => $opacity,
 					'itype' => $itype,
 					'visibility' => $this->visibility,
-					'z-index' => $this->current_layer,
+					'z-indexAdmin' => $this->current_layer,
 					'size' => $size,
 					'bpa' => $bpa
 				];
@@ -25248,7 +25248,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 			/* -- END ANNOTATIONS -- */
 
 			/* -- INDEX -- */
-			// Output Reference (index)
+			// Output Reference (indexAdmin)
 			foreach ($this->kwt_Reference as $v) {
 
 				$Present = 0;
@@ -25351,7 +25351,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 		/* -- END BOOKMARKS -- */
 
 		/* -- INDEX -- */
-		// Adjust Reference (index)
+		// Adjust Reference (indexAdmin)
 		foreach ($this->kwt_Reference as $v) {
 
 			$Present = 0;

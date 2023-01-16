@@ -1,5 +1,5 @@
-<?php include("header.php"); ?>
-<?php require_once("functions.php") ?>
+<?php include("../resources/header.php"); ?>
+<?php require_once("../resources/functions.php") ?>
 
 <!DOCTYPE html>
 <html lang="en">

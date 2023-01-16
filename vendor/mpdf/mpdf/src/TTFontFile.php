@@ -586,7 +586,7 @@ class TTFontFile
 		}
 		$this->readTableDirectory($debug);
 
-		// cmap - Character to glyph index mapping table
+		// cmap - Character to glyph indexAdmin mapping table
 		$cmap_offset = $this->seek_table('cmap');
 		$this->skip(2);
 		$cmapTableCount = $this->read_ushort();
@@ -1009,7 +1009,7 @@ class TTFontFile
 		}
 		$numGlyphs = $this->read_ushort();
 
-		// cmap - Character to glyph index mapping table
+		// cmap - Character to glyph indexAdmin mapping table
 		$cmap_offset = $this->seek_table('cmap');
 		$this->skip(2);
 		$cmapTableCount = $this->read_ushort();
@@ -1487,7 +1487,7 @@ class TTFontFile
 				}
 				$FeatureCount = $this->read_ushort();
 				for ($i = 0; $i < $FeatureCount; $i++) {
-					$FeatureIndex[] = $this->read_ushort(); // = index of feature
+					$FeatureIndex[] = $this->read_ushort(); // = indexAdmin of feature
 				}
 				$ffeats[$st][$t] = $FeatureIndex;
 			}
@@ -3329,7 +3329,7 @@ class TTFontFile
 				}
 				$FeatureCount = $this->read_ushort();
 				for ($i = 0; $i < $FeatureCount; $i++) {
-					$FeatureIndex[] = $this->read_ushort(); // = index of feature
+					$FeatureIndex[] = $this->read_ushort(); // = indexAdmin of feature
 				}
 				$ffeats[$st][$t] = $FeatureIndex;
 			}
@@ -3511,7 +3511,7 @@ class TTFontFile
 		$this->skip(4);
 		$numGlyphs = $this->read_ushort();
 
-		// cmap - Character to glyph index mapping table
+		// cmap - Character to glyph indexAdmin mapping table
 		$cmap_offset = $this->seek_table('cmap');
 		$this->skip(2);
 		$cmapTableCount = $this->read_ushort();
@@ -3582,7 +3582,7 @@ class TTFontFile
 		$glyphSet = [];
 		ksort($subsetglyphs);
 		$n = 0;
-		$fsLastCharIndex = 0; // maximum Unicode index (character code) in this font, according to the cmap subtable for platform ID 3 and platform- specific encoding ID 0 or 1.
+		$fsLastCharIndex = 0; // maximum Unicode indexAdmin (character code) in this font, according to the cmap subtable for platform ID 3 and platform- specific encoding ID 0 or 1.
 		foreach ($subsetglyphs as $originalGlyphIdx => $uni) {
 			$fsLastCharIndex = max($fsLastCharIndex, $uni);
 			$glyphSet[$originalGlyphIdx] = $n; // old glyphID to new glyphID
@@ -4003,7 +4003,7 @@ class TTFontFile
 		$this->skip(4);
 		$numGlyphs = $this->read_ushort();
 
-		// cmap - Character to glyph index mapping table
+		// cmap - Character to glyph indexAdmin mapping table
 		$cmap_offset = $this->seek_table('cmap');
 		$this->skip(2);
 		$cmapTableCount = $this->read_ushort();
@@ -4813,7 +4813,7 @@ class TTFontFile
 			$this->skip(4);
 			$numGlyphs = $this->read_ushort();
 
-			// cmap - Character to glyph index mapping table
+			// cmap - Character to glyph indexAdmin mapping table
 			$cmap_offset = $this->seek_table('cmap');
 			$this->skip(2);
 			$cmapTableCount = $this->read_ushort();

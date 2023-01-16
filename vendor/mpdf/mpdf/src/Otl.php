@@ -1717,7 +1717,7 @@ class Otl
 			///////////////////////////////////////////////////////////////////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			// Need to set alternate IF set by CSS3 font-feature for a tag
 			// i.e. if this is 'salt' alternate may be set to 2
-			// default value will be $alt=1 ( === index of 0 in list of alternates)
+			// default value will be $alt=1 ( === indexAdmin of 0 in list of alternates)
 			$alt = 1; // $alt=1 points to Alternative[0]
 			if ($tagInt > 1) {
 				$alt = $tagInt;

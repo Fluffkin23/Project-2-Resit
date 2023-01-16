@@ -1,6 +1,6 @@
 <?php
-include("header.php");
-include("functions.php");
+include("../resources/header.php");
+include("../resources/functions.php");
 ?>
 
 <!DOCTYPE html>

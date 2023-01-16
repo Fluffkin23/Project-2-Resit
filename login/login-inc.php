@@ -11,50 +11,35 @@ if (isset($_POST['submit'])) {
     } else {
         $sql = "SELECT * FROM login WHERE EMAIL = ?";
         $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt, $sql))
-        {
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
             echo " <script> alert('sqlerror'); document.location.href = 'login.php'; </script>";
-        }
-        else
-        {
+        } else {
             mysqli_stmt_bind_param($stmt, "s", $email);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
-            if ($row = mysqli_fetch_assoc($result))
-            {
+            if ($row = mysqli_fetch_assoc($result)) {
                 $passCheck = password_verify($password, $row['PASSWORD']);
-                if ($passCheck == false)
-                {
+                if ($passCheck == false) {
                     echo " <script> alert('wrong password');  document.location.href = 'login.php'; </script> ";
-                }
-                elseif ($passCheck == true)
-                {
-                    if ($row['USERTYPE'] == "user")
-                    {
+                } elseif ($passCheck == true) {
+                    if ($row['USERTYPE'] == "user") {
                         session_start();
                         // $_SESSION['sessionId'] = $row['CUSTOMER_ID'];
                         $_SESSION['sessionEmail'] = $row['EMAIL'];
                         //$_SESSION['sessionName'] = $row['NAME'];
                         //$_SESSION['sessionPhone_number'] = $row['PHONE_NUMBER'];
                         echo " <script> alert('logged in!'); document.location.href = '../index.php'; </script>";
-                    }
-                    else
-                    {
-                        if ($row['USERTYPE'] == "admin")
-                        {
+                    } else {
+                        if ($row['USERTYPE'] == "admin") {
                             session_start();
                             $_SESSION['adminUsername'] = $row['EMAIL'];
-                            echo "<script>alert('logged in!'); document.location.href = '../admin/services/services.php';</script>";
+                            echo "<script>alert('Hello boss !'); document.location.href = '../admin/indexAdmin/index.php';</script>";
                         }
                     }
-                }
-                else
-                {
+                } else {
                     echo " <script> alert('wrong password'); document.location.href = 'login.php'; </script>";
                 }
-            }
-            else
-            {
+            } else {
                 echo "<script>alert('no user found');document.location.href = 'login.php';</script>";
             }
         }
