@@ -32,6 +32,7 @@ include("../resources/header.php")
                     <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th>Customer email</th>
                             <th>Customer_id</th>
                             <th>Service_name</th>
                             <th>Customer_name</th>

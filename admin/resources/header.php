@@ -17,7 +17,7 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                         class="fa fa-user"></i> <?php echo $_SESSION['adminUsername'] ?> <b class="caret"></b></a>
-            <a href="../login/logout-inc.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+            <a href="../../login/logout-inc.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
         </li>
     </ul>
     <!-- Sidebar Menu Items --->
