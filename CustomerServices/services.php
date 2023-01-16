@@ -82,9 +82,10 @@ if (isset($_POST['send'])) {
                 mysqli_stmt_store_result($stmt);
 
             }
-            mysqli_stmt_close($stmt);
-            mysqli_close($conn);
+
         }
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
 
                 $mpdf = new \Mpdf\Mpdf();
 
