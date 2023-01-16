@@ -74,7 +74,7 @@ function add_Admin()
         $password = $_POST['password'];
         $usertype = "admin";
         $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
-        
+
         $sql = "INSERT INTO `login`
                         (EMAIL,PASSWORD,USERTYPE) VALUES (?,?,?)";
         if ($query = mysqli_prepare($connection, $sql)) {
@@ -145,64 +145,83 @@ function getStatusInProgess()
 
 function get_ticket()
 {
-    $query = query("SELECT * FROM ticket_table");
-    while ($row = fetch_array($query)) {
+    $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+    $sql = "SELECT * FROM ticket_table";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
         $product = <<<DELIMETER
-        <tr>
-            <td>{$row['TICKET_ID']}</td>
-            <td>{$row['CUSTOMER_ID']}</td>
-            <td>{$row['SERVICE_ID']} </td>
-            <td>{$row['SERVICE_NAME']}</td>
-           <td>{$row['SERVICE_DESCRIPTION']}</td>
-              <td>{$row['DATE']}</td>
-            <td>{$row['STATUS']}</td>
-           <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
-           <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
-        </tr>
-        DELIMETER;
+            <tr>
+                <td>{$row['TICKET_ID']}</td>
+                <td>{$row['CUSTOMER_ID']}</td>
+                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['SERVICE_NAME']}</td>
+               <td>{$row['SERVICE_DESCRIPTION']}</td>
+                  <td>{$row['DATE']}</td>
+                <td>{$row['STATUS']}</td>
+               <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+               <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+            </tr>
+            DELIMETER;
         echo $product;
     }
 }
 
 function ticket_done()
 {
+    $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+
     $status = "DONE";
-    $query = query("SELECT * FROM ticket_table WHERE STATUS = 'DONE'");
-    while ($row = fetch_array($query)) {
+    $sql = "SELECT * FROM ticket_table WHERE STATUS=?";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("s", $status);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
         $product = <<<DELIMETER
-        <tr>
-            <td>{$row['TICKET_ID']}</td>
-            <td>{$row['CUSTOMER_ID']}</td>
-            <td>{$row['SERVICE_ID']} </td>
-            <td>{$row['SERVICE_NAME']}</td>
-           <td>{$row['SERVICE_DESCRIPTION']}</td>
-              <td>{$row['DATE']}</td>
-            <td>{$row['STATUS']}</td>
-           <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
-           <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
-        </tr>
-        DELIMETER;
+            <tr>
+                <td>{$row['TICKET_ID']}</td>
+                <td>{$row['CUSTOMER_ID']}</td>
+                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['SERVICE_NAME']}</td>
+               <td>{$row['SERVICE_DESCRIPTION']}</td>
+                  <td>{$row['DATE']}</td>
+                <td>{$row['STATUS']}</td>
+               <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+               <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+            </tr>
+            DELIMETER;
         echo $product;
     }
 }
 
 function ticket_in_progress()
 {
-    $query = query("SELECT * FROM ticket_table WHERE STATUS = 'IN PROGRESS'");
-    while ($row = fetch_array($query)) {
+    $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+
+    $status = "IN PROGRESS";
+    $sql = "SELECT * FROM ticket_table WHERE STATUS=?";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("s", $status);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
         $product = <<<DELIMETER
-        <tr>
-            <td>{$row['TICKET_ID']}</td>
-            <td>{$row['CUSTOMER_ID']}</td>
-            <td>{$row['SERVICE_ID']} </td>
-            <td>{$row['SERVICE_NAME']}</td>
-           <td>{$row['SERVICE_DESCRIPTION']}</td>
-              <td>{$row['DATE']}</td>
-            <td>{$row['STATUS']}</td>
-           <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
-           <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
-        </tr>
-        DELIMETER;
+            <tr>
+                <td>{$row['TICKET_ID']}</td>
+                <td>{$row['CUSTOMER_ID']}</td>
+                <td>{$row['SERVICE_ID']} </td>
+                <td>{$row['SERVICE_NAME']}</td>
+               <td>{$row['SERVICE_DESCRIPTION']}</td>
+                  <td>{$row['DATE']}</td>
+                <td>{$row['STATUS']}</td>
+               <td> <a class='btn btn-danger' href = "status_InProgess.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-check'></span></a></td>
+               <td> <a class='btn btn-danger' href = "status_Done.php?update&id={$row['TICKET_ID']}"><span class='glyphicon glyphicon-remove-circle'></span></a></td>
+            </tr>
+            DELIMETER;
         echo $product;
     }
 }
@@ -251,8 +270,15 @@ DELIMETER;
 
 function ticket_new()
 {
-    $query = query("SELECT * FROM ticket_table WHERE STATUS = 'NEW'");
-    while ($row = fetch_array($query)) {
+    $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+    $status = "NEW";
+    $sql = "SELECT * FROM ticket_table WHERE STATUS=?";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("s", $status);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
         $product = <<<DELIMETER
             <tr>
                 <td>{$row['TICKET_ID']}</td>
