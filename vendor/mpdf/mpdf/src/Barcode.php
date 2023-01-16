@@ -57,7 +57,7 @@ class Barcode
 				$bpi = 22; // Bars per inch
 				return new Barcode\Rm4Scc($code, $xdim, ((25.4 / $bpi) - $xdim) / $xdim, ['D' => 5, 'A' => 5, 'F' => 8, 'T' => 2]);
 
-			case 'KIX': // KIX (Klant index - Customer index)
+			case 'KIX': // KIX (Klant indexAdmin - Customer indexAdmin)
 				$xdim = 0.508; // Nominal value for X-dim (bar width) in mm (spec.)
 				$bpi = 22; // Bars per inch
 				return new Barcode\Rm4Scc($code, $xdim, ((25.4 / $bpi) - $xdim) / $xdim, ['D' => 5, 'A' => 5, 'F' => 8, 'T' => 2], true);

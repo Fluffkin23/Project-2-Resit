@@ -246,7 +246,7 @@ class TTFontFileAnalysis extends TTFontFile
 
 
 		///////////////////////////////////
-		// cmap - Character to glyph index mapping table
+		// cmap - Character to glyph indexAdmin mapping table
 		///////////////////////////////////
 		$cmap_offset = $this->seek_table("cmap");
 		$this->skip(2);

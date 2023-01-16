@@ -352,7 +352,7 @@ abstract class BlockTag extends Tag
 		if (isset($properties['Z-INDEX']) && $this->mpdf->current_layer == 0) {
 			$v = (int) $properties['Z-INDEX'];
 			if ($v > 0) {
-				$currblk['z-index'] = $v;
+				$currblk['z-indexAdmin'] = $v;
 				$this->mpdf->BeginLayer($v);
 			}
 		}
@@ -1226,7 +1226,7 @@ abstract class BlockTag extends Tag
 		// Reset values
 		$this->mpdf->Reset();
 
-		if (isset($this->mpdf->blk[$this->mpdf->blklvl]['z-index']) && $this->mpdf->blk[$this->mpdf->blklvl]['z-index'] > 0) {
+		if (isset($this->mpdf->blk[$this->mpdf->blklvl]['z-indexAdmin']) && $this->mpdf->blk[$this->mpdf->blklvl]['z-indexAdmin'] > 0) {
 			$this->mpdf->EndLayer();
 		}
 

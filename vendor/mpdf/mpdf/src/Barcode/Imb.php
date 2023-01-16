@@ -277,8 +277,8 @@ class Imb extends \Mpdf\Barcode\AbstractBarcode implements \Mpdf\Barcode\Barcode
 	private function imbTables($n, $size)
 	{
 		$table = [];
-		$lli = 0; // LUT lower index
-		$lui = $size - 1; // LUT upper index
+		$lli = 0; // LUT lower indexAdmin
+		$lui = $size - 1; // LUT upper indexAdmin
 		for ($count = 0; $count < 8192; ++$count) {
 
 			$bitCount = 0;

@@ -1,6 +1,6 @@
 <?php
-require_once("functions.php");
-include("header.php")
+require_once("../resources/functions.php");
+include("../resources/header.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,9 +33,6 @@ include("header.php")
                     <a  href="ticket_asc.php" >Ticket in Asc way </a><br>
                     <a  href="ticket_desc.php" >Ticket in Desc way </a><br>
                     <a  href="ticket.php" >All tickets </a><br>
-
-
-
                 </div>
                 <div class="row">
                     <table class="table table-hover">

@@ -746,7 +746,7 @@ class OtlDump
 		$numGlyphs = $this->read_ushort();
 
 		///////////////////////////////////
-		// cmap - Character to glyph index mapping table
+		// cmap - Character to glyph indexAdmin mapping table
 		///////////////////////////////////
 		$cmap_offset = $this->seek_table("cmap");
 		$this->skip(2);
@@ -1223,7 +1223,7 @@ class OtlDump
 					}
 					$FeatureCount = $this->read_ushort();
 					for ($i = 0; $i < $FeatureCount; $i++) {
-						$FeatureIndex[] = $this->read_ushort(); // = index of feature
+						$FeatureIndex[] = $this->read_ushort(); // = indexAdmin of feature
 					}
 					$ffeats[$st][$t] = $FeatureIndex;
 				}
@@ -3076,7 +3076,7 @@ $MarkAttachmentType = ' . var_export($this->MarkAttachmentType, true) . ';
 					}
 					$FeatureCount = $this->read_ushort();
 					for ($i = 0; $i < $FeatureCount; $i++) {
-						$FeatureIndex[] = $this->read_ushort(); // = index of feature
+						$FeatureIndex[] = $this->read_ushort(); // = indexAdmin of feature
 					}
 					$ffeats[$st][$t] = $FeatureIndex;
 				}

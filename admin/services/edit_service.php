@@ -1,9 +1,9 @@
-<?php include("header.php");
-require_once("functions.php");
+<?php include("../resources/header.php");
+require_once("../resources/functions.php");
 
 if(isset($_GET['id']))
 {
-    $query = query("SELECT * FROM services WHERE SERVICE_ID = " . escape_string($_GET['id']) . " ");
+    $query = query("SELECT * FROM services WHERE ID = " . escape_string($_GET['id']) . " ");
     while ($row = fetch_array($query))
     {
         $name = escape_string($row['SERVICE_NAME']);

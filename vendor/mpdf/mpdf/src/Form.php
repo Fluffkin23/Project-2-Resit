@@ -792,7 +792,7 @@ class Form
 			}
 			$this->writer->write('/Kids [ ' . $kstr . ' ] '); // 11 0 R 12 0 R etc.
 			//	$this->writer->write('/Opt [ '.$optstr.' ] ');
-			//V entry holds index corresponding to the appearance state of
+			//V entry holds indexAdmin corresponding to the appearance state of
 			//whichever child field is currently in the on state = or Off
 			if (isset($frg['on'])) {
 				$state = $frg['on'];

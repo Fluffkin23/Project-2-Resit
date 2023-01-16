@@ -285,7 +285,7 @@ class ImageProcessor implements \Psr\Log\LoggerAwareInterface
 					if ($p) {
 						$n = $this->fourBytesToInt(substr($data, $p - 4, 4));
 						$transparency = substr($data, $p + 4, $n);
-						// ord($transparency[$index]) = the alpha value for that index
+						// ord($transparency[$indexAdmin]) = the alpha value for that indexAdmin
 						// generate alpha channel
 						for ($ypx = 0; $ypx < $h; ++$ypx) {
 							for ($xpx = 0; $xpx < $w; ++$xpx) {
@@ -926,7 +926,7 @@ class ImageProcessor implements \Psr\Log\LoggerAwareInterface
 					if ($p) {
 						$n = $this->fourBytesToInt(substr($data, $p - 4, 4));
 						$transparency = substr($data, $p + 4, $n);
-						// ord($transparency[$index]) = the alpha value for that index
+						// ord($transparency[$indexAdmin]) = the alpha value for that indexAdmin
 						// generate alpha channel
 						for ($ypx = 0; $ypx < $h; ++$ypx) {
 							for ($xpx = 0; $xpx < $w; ++$xpx) {
