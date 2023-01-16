@@ -648,3 +648,9 @@ textarea.contact-form-text {
   .contact-form-btn:hover {
     background: darkblue;
   }
+
+
+  .description {
+    width: 5vw;
+    height: 5vw;
+  }

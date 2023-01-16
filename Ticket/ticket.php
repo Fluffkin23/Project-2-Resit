@@ -17,7 +17,9 @@ $date = date('d-m-y h:i:s');
 <body>
 
 <form action="" method="POST">
-
+<div class="reg-title">
+            Need help? Open your ticket below:
+        </div>
     <select name="services" id="services">
 
         <?php
@@ -38,7 +40,7 @@ $date = date('d-m-y h:i:s');
         ?>
 
     </select>
-    <input type="text" name="description" placeholder="Description">
+    <input type="text" class="description" name="description" placeholder="Describe your problem:">
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
