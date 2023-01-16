@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2023 at 05:53 PM
+-- Generation Time: Jan 16, 2023 at 09:50 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -54,6 +54,21 @@ CREATE TABLE `contract` (
   `EMAIL` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `contract`
+--
+
+INSERT INTO `contract` (`CONTRACT_ID`, `CUSTOMER_ID`, `SERVICE_NAME`, `EMAIL`) VALUES
+(1, 16, 'php', 'aa@gmail.co'),
+(2, 16, 'php', 'aa@gmail.co'),
+(3, 16, 'html', 'aa@gmail.co'),
+(4, 16, 'java', 'aa@gmail.co'),
+(5, 16, 'javascript', 'aa@gmail.co'),
+(6, 16, 'php', 'aa@gmail.co'),
+(7, 16, 'html', 'aa@gmail.co'),
+(8, 16, 'html', 'aa@gmail.co'),
+(9, 16, 'javascript', 'aa@gmail.co');
+
 -- --------------------------------------------------------
 
 --
@@ -72,13 +87,6 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`CUSTOMER_ID`, `NAME`, `EMAIL`, `PHONE_NUMBER`) VALUES
-(4, 'gggg', 'gg@gmail.com', 111111),
-(5, 'sss', 'ss@gmail.com', 111111),
-(6, 'sss', 'ssdsffs@gmail.com', 111111),
-(7, 'rares', 'sdfsdfd@gmail.com', 8789798),
-(8, 'dd', 'rarezsda@gmail.com', 1),
-(9, 'aa', 'rarezsdaalin@gmail.com', 0),
-(10, 'aa', 'saaaaaaad@gmail.com', 0),
 (11, 'dd', 'saaaaaaads@gmail.com', 0),
 (12, 'hh', 'saaaaaaadsds@gmail.com', 0),
 (13, 'll', 'saaallaaaadsds@gmail.com', 0),
@@ -89,7 +97,8 @@ INSERT INTO `customer` (`CUSTOMER_ID`, `NAME`, `EMAIL`, `PHONE_NUMBER`) VALUES
 (18, 'test', 'test@gmail.com', 12313),
 (19, 'sdfdsfs', 'test2@gmail.com', 12312),
 (20, 'sdfdsfs', 'test3@gmail.com', 12312),
-(21, 'alin', 'alinboss@gmail.com', 1234);
+(21, 'alin', 'alinboss@gmail.com', 1234),
+(22, 'rares', 'rares2@gmail.com', 77666677);
 
 -- --------------------------------------------------------
 
@@ -132,7 +141,9 @@ INSERT INTO `login` (`ID`, `EMAIL`, `PASSWORD`, `USERTYPE`) VALUES
 (21, 'test@gmail.com', '$2y$10$weDVZdK4iiyzfAXofzGI4eA1kP0GWtK6rdVBHpadCUuJRMVPsPvPS', 'USER'),
 (22, 'test2@gmail.com', '$2y$10$yN4aCUtE.XCyMNHwzJSisO04XfyyzyHUUvPYfegUXNp1egksWPCHO', 'user'),
 (23, 'test3@gmail.com', '$2y$10$pCYfYS29tophgddxwyBA4Owr/oPs5Md/PIBK3.kYX1ps8YhfsFIoe', 'user'),
-(24, 'alinboss@gmail.com', '$2y$10$Wa7BW09TK8LFDy.5BX3PKe8q2AwB4CEq/MWr5Df/jPRX/2/qmL7u6', 'user');
+(24, 'alinboss@gmail.com', '$2y$10$Wa7BW09TK8LFDy.5BX3PKe8q2AwB4CEq/MWr5Df/jPRX/2/qmL7u6', 'user'),
+(25, 'billossu@gmail.com', '$2y$10$G4ZRhr0xuDQ3smDcnKURJ.pJikS18tsEsWNwjKaVRVUY22uYCNOz2', 'admin'),
+(26, 'rares2@gmail.com', '$2y$10$RyvTit6S64JytK2B7pb/uOb6pN1D1zJrLUpGg08WRobMYnaR2G9C.', 'user');
 
 -- --------------------------------------------------------
 
@@ -141,11 +152,26 @@ INSERT INTO `login` (`ID`, `EMAIL`, `PASSWORD`, `USERTYPE`) VALUES
 --
 
 CREATE TABLE `reqeust_services` (
-  `service_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `service_name` int(11) NOT NULL,
-  `customer_name` int(11) NOT NULL
+  `service_name` text NOT NULL,
+  `customer_name` text NOT NULL,
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reqeust_services`
+--
+
+INSERT INTO `reqeust_services` (`customer_id`, `service_name`, `customer_name`, `email`) VALUES
+(16, '0', '0', ''),
+(16, '0', '0', ''),
+(16, '0', '0', ''),
+(16, '0', '0', ''),
+(16, 'javascript', 'costahce', ''),
+(16, 'php', 'testRares', ''),
+(16, 'html', 'costahce', ''),
+(16, 'html', 'sdfdff', 'aa@gmail.com'),
+(16, 'javascript', 'TEST', 'aa@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -177,11 +203,10 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`ID`, `SERVICE_NAME`, `SERVICE_DESCRIPTION`, `SERVICE_PRICE`) VALUES
-(6, 'WEBSERVIce_Update_final test', '    este foarte bunjj', 24444),
-(9, 'WEBSERVICE', 'adsadas', 231),
 (10, 'sadsa', 'sadsadasd', 231),
 (11, 'test', 'sadsad', 1111),
-(12, 'aaaaaaa', 'aaaaaa', 1111111);
+(12, 'aaaaaaa', 'aaaaaa', 1111111),
+(13, 'WEBSERVIce_Update22222Final', 'final test', 12121);
 
 -- --------------------------------------------------------
 
@@ -191,11 +216,11 @@ INSERT INTO `services` (`ID`, `SERVICE_NAME`, `SERVICE_DESCRIPTION`, `SERVICE_PR
 
 CREATE TABLE `ticket_table` (
   `TICKET_ID` int(11) NOT NULL,
-  `CUSTOMER_ID` int(11) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
   `SERVICE_ID` int(11) NOT NULL,
   `SERVICE_NAME` varchar(100) NOT NULL,
   `SERVICE_DESCRIPTION` varchar(100) NOT NULL,
-  `DATE` date NOT NULL,
+  `RECEIVE_DATE` datetime NOT NULL,
   `STATUS` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -203,10 +228,20 @@ CREATE TABLE `ticket_table` (
 -- Dumping data for table `ticket_table`
 --
 
-INSERT INTO `ticket_table` (`TICKET_ID`, `CUSTOMER_ID`, `SERVICE_ID`, `SERVICE_NAME`, `SERVICE_DESCRIPTION`, `DATE`, `STATUS`) VALUES
-(1, 12, 1, 'sadasdsa', 'asdasd', '2023-01-03', 'IN PROGRESS'),
-(2, 12, 1, 'sadasdsa', 'asdasd', '2022-01-03', 'IN PROGRESS'),
-(3, 12, 1, 'FSDF', 'DSFDSF', '2023-01-11', 'DONE');
+INSERT INTO `ticket_table` (`TICKET_ID`, `EMAIL`, `SERVICE_ID`, `SERVICE_NAME`, `SERVICE_DESCRIPTION`, `RECEIVE_DATE`, `STATUS`) VALUES
+(7, 'aa@gmail.com', 0, 'javascript', 'KJKJLJ', '0000-00-00 00:00:00', 'NEW'),
+(8, 'aa@gmail.com', 0, 'javascript', 'KJKJLJ', '0000-00-00 00:00:00', 'NEW'),
+(9, 'aa@gmail.com', 0, 'javascript', 'KJKJLJ', '0000-00-00 00:00:00', 'NEW'),
+(10, 'aa@gmail.com', 0, 'javascript', 'test', '0000-00-00 00:00:00', 'NEW'),
+(11, 'aa@gmail.com', 0, 'javascript', 'lkkn', '0000-00-00 00:00:00', 'NEW'),
+(12, 'aa@gmail.com', 0, 'javascript', 'lkjhgfdsa', '0000-00-00 00:00:00', 'NEW'),
+(13, 'aa@gmail.com', 0, 'javascript', 'lkjhgfdsa', '0000-00-00 00:00:00', 'NEW'),
+(14, 'aa@gmail.com', 0, 'javascript', 'KJKJLJ', '0000-00-00 00:00:00', 'NEW'),
+(15, 'aa@gmail.com', 0, 'javascript', 'lkjhgfdsa', '0000-00-00 00:00:00', 'NEW'),
+(16, 'aa@gmail.com', 0, 'javascript', 'KJKJLJ', '0000-00-00 00:00:00', 'NEW'),
+(17, 'aa@gmail.com', 0, 'javascript', 'lkjhgfdsa', '0000-00-00 00:00:00', 'NEW'),
+(18, 'aa@gmail.com', 0, 'javascript', 'RARES', '0000-00-00 00:00:00', 'NEW'),
+(19, 'aa@gmail.com', 0, 'javascript', 'lkjhgfdsa', '0000-00-00 00:00:00', 'NEW');
 
 --
 -- Indexes for dumped tables
@@ -250,31 +285,31 @@ ALTER TABLE `ticket_table`
 -- AUTO_INCREMENT for table `contract`
 --
 ALTER TABLE `contract`
-  MODIFY `CONTRACT_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CONTRACT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `CUSTOMER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ticket_table`
 --
 ALTER TABLE `ticket_table`
-  MODIFY `TICKET_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `TICKET_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

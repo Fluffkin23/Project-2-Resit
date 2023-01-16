@@ -27,19 +27,19 @@ include("../resources/header.php")
             <div class="col-md-12">
                 <div class="row">
                     <h1 class="page-header">Tickets </h1>
-                    <a href="ticket_new.php" >Tickets just received </a> <br>
-                    <a  href="ticket_done.php" >Tickets Done </a><br>
-                    <a  href="ticket_in_progress.php" >Tickets In Progress </a><br>
-                    <a  href="ticket_asc.php" >Ticket in Asc way </a><br>
-                    <a  href="ticket_desc.php" >Ticket in Desc way </a><br>
-                    <a  href="ticket.php" >All tickets </a><br>
+                    <a href="ticket_new.php">Tickets just received </a> <br>
+                    <a href="ticket_done.php">Tickets Done </a><br>
+                    <a href="ticket_in_progress.php">Tickets In Progress </a><br>
+                    <a href="ticket_asc.php">Ticket in Asc way </a><br>
+                    <a href="ticket_desc.php">Ticket in Desc way </a><br>
+                    <a href="ticket.php">All tickets </a><br>
                 </div>
                 <div class="row">
                     <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Ticket_ID</th>
-                            <th>Customer_ID</th>
+                            <th>Email</th>
                             <th>Service_ID</th>
                             <th>Service_Name</th>
                             <th>Service_Description</th>

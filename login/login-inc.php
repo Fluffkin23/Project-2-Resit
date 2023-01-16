@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
                 } elseif ($passCheck == true) {
                     if ($row['USERTYPE'] == "user") {
                         session_start();
-                        // $_SESSION['sessionId'] = $row['CUSTOMER_ID'];
+                        $_SESSION['sessionId'] = $row['ID'];
                         $_SESSION['sessionEmail'] = $row['EMAIL'];
                         //$_SESSION['sessionName'] = $row['NAME'];
                         //$_SESSION['sessionPhone_number'] = $row['PHONE_NUMBER'];
