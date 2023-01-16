@@ -1,7 +1,5 @@
-<?php
-require_once("connectionDB.php");
-?>
-
+<?php session_start();
+echo $_SESSION['sessionEmail'] ?>
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="/style.css">
@@ -16,73 +14,53 @@ require_once("connectionDB.php");
 
 <body>
 
-    <form action="" method="POST">
+<form action="" method="POST">
 
-        <select name="services" id="services">
+    <select name="services" id="services">
 
-            <?php
-            if (isset($_SESSION['EMAIL']) && $_SESSION['PASSWORD']['loggedIn']) {
-                // good to show protected content
-            
+        <?php
+        // good to show protected content
 
-                $sql = "SELECT SERVICE_NAME FROM request_services" . $_SESSION['EMAIL'];
-                ;
-                $result = mysqli_query($connection, $sql);
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $id = $row['SERVICE_NAME'];
-                    $service = $row['SERVICE_NAME'];
-                    echo "<option value='$id'>$service</option>";
-                }
-            }
+        $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+
+        $username = $_SESSION['sessionEmail'];
+        $get_user = "SELECT * from reqeust_services WHERE EMAIL =?";
+        $stmt = $connection->prepare($get_user);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value=\"owner1\">" . $row['service_name'] . "</option>";
+            $customerName = $row['service_name'];
+        }
         ?>
 
-        </select>
-        <input type="text" name="description" placeholder="Description">
-        <input type="submit" name="submit" value="Submit">
-
-    </form>
-
+    </select>
+    <input type="text" name="description" placeholder="Description">
     <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+        $description = $_POST['description'];
+        $status = "NEW";
+        $date = date("Y-m-d");
+        $_POST['date'] = $date;
 
-    if (isset($_SESSION['EMAIL']) && $_SESSION['PASSWORD']['loggedIn']) {
-        // good to show protected content
-    
-
-        if (isset($_POST['submit'])) {
-            $serviceName = $_POST['services'];
-            $description = $_POST['description'];
-
-            $sql = "INSERT INTO ticket_table (SERVICE_NAME, SERVICE_DESCRIPTION) VALUES ('$serviceName', '$description')" or die(mysqli_error($db)) . $_SESSION['EMAIL'];
-            ;
-            $result = mysqli_query($connection, $sql) or trigger_error("Query Failed! SQL: $sql - Error: " . mysqli_error($connection), E_USER_ERROR);
-            if (!$result) {
-                die('Query FAILED' . mysqli_error($connection));
-            } else {
-                echo '<script type="text/javascript">
-            window.onload = function () { alert("Record created!"); } 
-        </script>';
-            }
+        $sql = "INSERT INTO `ticket_table`
+                                (EMAIL,SERVICE_NAME,SERVICE_DESCRIPTION,DATE,STATUS) VALUES (?,?,?,?,?)";
+        if ($query = mysqli_prepare($connection, $sql)) {
+            mysqli_stmt_bind_param($query, 'sssis', $username, $customerName, $description, $date, $status);
         }
-
-
-
-        //get results from database
-        $result = mysqli_query($connection, "SELECT SERVICE_NAME, SERVICE_DESCRIPTION, DATE, STATUS FROM ticket_table");
-        $all_property = array(); //declare an array for saving property
-    
-
-
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "Service name: " . $row["SERVICE_NAME"] . " - Service description: " . $row["SERVICE_DESCRIPTION"] . " - Date " . $row["DATE"] . " - Status " . $row["STATUS"] . "<br>";
-            }
+        mysqli_stmt_execute($query);
+        if ($query) {
+            echo "Entry Successfull";
         } else {
-            echo "0 results";
+            echo "error";
         }
     }
-$connection->close();
     ?>
+    <input type="submit" name="submit" value="Submit">
+
+</form>
 </body>
 
 </html>

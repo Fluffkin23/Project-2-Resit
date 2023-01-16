@@ -1,5 +1,5 @@
 <?php
-require_once  '../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 include_once '../includes/header.php';
 
@@ -60,13 +60,13 @@ if (isset($_POST['send'])) {
             $user_id = $row['CUSTOMER_ID'];
         }
 
-        $sql1 = "INSERT into reqeust_services (customer_id,service_name, customer_name) VALUES (?,?,?)";
+        $sql1 = "INSERT into reqeust_services (customer_id,service_name, customer_name,email) VALUES (?,?,?,?)";
         $stmt1 = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt1, $sql1)) {
             header("Location: services.php?error=sqlerror");
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt1, "iss", $user_id, $services, $customer);
+            mysqli_stmt_bind_param($stmt1, "isss", $user_id, $services, $customer, $email);
             mysqli_stmt_execute($stmt1);
             mysqli_stmt_store_result($stmt1);
 
@@ -87,52 +87,50 @@ if (isset($_POST['send'])) {
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
 
-                $mpdf = new \Mpdf\Mpdf();
+        $mpdf = new \Mpdf\Mpdf();
 
-                $data = "";
+        $data = "";
 
-                $data .= "<h1>Your Contract details</h1>";
+        $data .= "<h1>Your Contract details</h1>";
 
-                $data .= "<strong>Customer name:</strong> " . $customer . "<br>";
-                $data .= "<strong>Service:</strong> " . $services . "<br>";
-                $data .= "<strong>Email:</strong> " . $email . "<br>";
-                $data .= "<strong>Phone:</strong> " . $phone . "<br>";
+        $data .= "<strong>Customer name:</strong> " . $customer . "<br>";
+        $data .= "<strong>Service:</strong> " . $services . "<br>";
+        $data .= "<strong>Email:</strong> " . $email . "<br>";
+        $data .= "<strong>Phone:</strong> " . $phone . "<br>";
 
-                $mpdf->WriteHTML($data);
+        $mpdf->WriteHTML($data);
 
-                $pdf = $mpdf->Output(" ", "S");
-                $mail = new PHPMailer;
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->SMTPSecure = 'ssl';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'kaisersunny2016@gmail.com';
-                $mail->Password = 'ouadtfpdgngnsmxw';
-                $mail->Port = 465;
+        $pdf = $mpdf->Output(" ", "S");
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'ssl';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'kaisersunny2016@gmail.com';
+        $mail->Password = 'ouadtfpdgngnsmxw';
+        $mail->Port = 465;
 
-                $mail->setFrom('kaisersunny2016@gmail.com');
+        $mail->setFrom('kaisersunny2016@gmail.com');
 
-                $mail->addAddress($_POST['email']);
+        $mail->addAddress($_POST['email']);
 
-                $mail->addStringAttachment($pdf, 'myattachement.pdf');
-                $mail->isHTML(true);
+        $mail->addStringAttachment($pdf, 'myattachement.pdf');
+        $mail->isHTML(true);
 
-                $mail->Subject = $services;
-                $mail->Body = '<h3>Requested service from</h3>' . "<h3>" . $customer . "</h3>";
+        $mail->Subject = $services;
+        $mail->Body = '<h3>Requested service from</h3>' . "<h3>" . $customer . "</h3>";
 
-                $mail->send();
+        $mail->send();
 
-                echo
-                "
+        echo
+        "
               <script>
                 alert('Email Sent successfully');
                 document.location.href = 'services.php';
               </script>
             ";
-            }
-
-
+    }
 
 
 }
@@ -144,7 +142,7 @@ if (isset($_POST['send'])) {
 </div>
 <div class="border"></div>
 <form class="contact-form" action="services.php" method="post">
-    <input type="text" name="customer" class="contact-form-text" >
+    <input type="text" name="customer" class="contact-form-text">
     <input type="text" name="email" class="contact-form-text" value="<?php echo $_SESSION['sessionEmail'] ?>">
     <input type="text" name="phone" class="contact-form-text">
     <select name="services" class="contact-form-text">
