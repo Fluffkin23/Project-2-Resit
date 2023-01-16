@@ -10,11 +10,11 @@ include '../includes/header.php';
             <div class="login-data">
                 <div class="email">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email">TG
+                    <input type="email" placeholder="enter your email" name="email" id="email">
                 </div>
                 <div class="password">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" placeholder="enter your password" name="password" id="password">
                 </div>
             </div>
             <div class="submit-button">
