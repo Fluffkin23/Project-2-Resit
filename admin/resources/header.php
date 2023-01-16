@@ -43,7 +43,8 @@
                 <a href="../customer/users.php"><i class="fa fa-fw fa-wrench"></i>Customers</a>
             </li>
             <li>
-                <a href="../ticket/ticket.php"><i class="fa fa-fw fa-wrench"></i>Contracts</a>
+                <a href="../request_Services/request_Services.php"><i class="fa fa-fw fa-wrench"></i>Request
+                    Services</a>
             </li>
         </ul>
     </div>

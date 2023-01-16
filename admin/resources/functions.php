@@ -168,6 +168,25 @@ function get_ticket()
     }
 }
 
+function get_request_service()
+{
+    $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
+    $sql = "SELECT * FROM reqeust_services";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $product = <<<DELIMETER
+            <tr>
+                <td>{$row['customer_id']}</td>
+                <td>{$row['service_name']}</td>
+                <td>{$row['customer_name']} </td>
+            </tr>
+            DELIMETER;
+        echo $product;
+    }
+}
+
 function ticket_done()
 {
     $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());

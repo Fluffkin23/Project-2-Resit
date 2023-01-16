@@ -30,7 +30,7 @@ require_once 'database.php';
                 echo "<li><a href='../CustomerServices/myservices.php'>My Services</a></li>";
                 echo "<li><a href='../Ticket/ticket.php'>My Tickets</a></li>";
             } else {
-                echo "<li><a href='Registration.php'>Sign Up</a></li>";
+                echo "<li><a href='../register/Registration.php'>Sign Up</a></li>";
                 echo "<li><a href='../login/login.php'>Log in</a></li>";
             }
             ?>

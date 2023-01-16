@@ -1,5 +1,7 @@
-<?php include("../resources/header.php"); ?>
-<?php require_once("../resources/config.php") ?>
+<?php
+require_once("../resources/functions.php");
+include("../resources/header.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,26 +19,38 @@
     <link href="../css/plugins/morris.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            <!-- Page Heading -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header"> Welcome to the Admin Page</h1>
-                    <h3>Hello boss!</h3>
+            <div class="col-md-12">
+                <div class="row">
+                    <h1 class="page-header">Request Service </h1>
+                </div>
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Customer_id</th>
+                            <th>Service_name</th>
+                            <th>Customer_name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php get_request_service(); ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+            <!-- /.container-fluid -->
         </div>
+        <!-- /#page-wrapper -->
     </div>
+    <!-- /#wrapper -->
 </body>
-
 </html>
+
+
+
+
