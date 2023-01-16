@@ -44,7 +44,9 @@ $date = date('d-m-y h:i:s');
         $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
         $description = $_POST['description'];
         $status = "NEW";
-        $date = date('y-m-d h:i:s');
+        date_default_timezone_set("America/New_York");
+
+        date('Y-m-d H:i:s', strtotime($date));
 
         $sql = "INSERT INTO `ticket_table`
                                 (EMAIL,SERVICE_NAME,SERVICE_DESCRIPTION,RECEIVE_DATE,STATUS) VALUES (?,?,?,?,?)";
