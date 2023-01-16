@@ -30,7 +30,7 @@ include_once '../includes/header.php';
 
        ?><tr>
         <th scope="row"><?php echo $contract_id?>
-        <br><a href="order_pdf.php?id=<?php echo $contract_id?>">PDF</a></th>
+        <br><a href="order_pdf.php?id=<?php echo $contract_id;?>">PDF</a></th>
         <td><?php echo $row['CUSTOMER_ID']?><br></td>
         <td><?php echo $service?> </td>
         <td><?php echo $email?></td>

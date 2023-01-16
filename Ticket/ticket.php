@@ -26,17 +26,19 @@ $date = date('d-m-y h:i:s');
         // good to show protected content
 
         $connection = mysqli_connect("localhost", "root", "", "service_it") or die("Connection Failed" . mysqli_connect_error());
-
-        $username = $_SESSION['sessionEmail'];
-        $get_user = "SELECT * from reqeust_services WHERE EMAIL =?";
-        $stmt = $connection->prepare($get_user);
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value=\"owner1\">" . $row['service_name'] . "</option>";
-            $customerName = $row['service_name'];
-        }
+        if($_SESSION['sessionEmail']) {
+            $username = $_SESSION['sessionEmail'];
+            $get_user = "SELECT * from reqeust_services WHERE EMAIL =?";
+            $stmt = $connection->prepare($get_user);
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value=\"owner1\">" . $row['service_name'] . "</option>";
+                $customerName = $row['service_name'];
+            }
+        }else{
+            header("Location: ticket.php?error=sessionerror");        }
         ?>
 
     </select>
