@@ -76,7 +76,7 @@ function add_Admin()
         $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO `login`
-                        (EMAIL,PASSWORD,USERTYPE) VALUES (?,?,?)";
+                        (ID,EMAIL,PASSWORD,USERTYPE) VALUES (0,?,?,?)";
         if ($query = mysqli_prepare($connection, $sql)) {
             mysqli_stmt_bind_param($query, 'sss', $username, $hashedpassword, $usertype);
         }
