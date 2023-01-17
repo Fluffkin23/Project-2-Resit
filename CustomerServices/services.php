@@ -12,10 +12,10 @@ require '../PHPMailer/SMTP.php';
 
 
 if (isset($_POST['send'])) {
-    $services = mysqli_real_escape_string($_POST['services']);
-    $customer = mysqli_real_escape_string($_POST['customer']);
-    $email = mysqli_real_escape_string($_POST['email']);
-    $phone = mysqli_real_escape_string($_POST['phone']);
+    $services = $_POST['services'];
+    $customer = $_POST['customer'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
 
     if (empty($services) || empty($customer) || empty($email) || empty($phone)) {
         echo
