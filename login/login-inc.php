@@ -3,8 +3,8 @@
 if (isset($_POST['submit'])) {
     require '../includes/database.php';
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = mysqli_real_escape_string($_POST['email']);
+    $password = mysqli_real_escape_string($_POST['password']);
 
     if (empty($email) || empty($password)) {
         echo "<script> alert('empty fields'); document.location.href = 'login.php'; </script>";
