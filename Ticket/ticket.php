@@ -1,6 +1,5 @@
 <?php
 include '../includes/header.php';
-
 $date = date('y-m-d h:i:s');
 ?>
 <!DOCTYPE html>
@@ -34,8 +33,8 @@ $date = date('y-m-d h:i:s');
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
+                $services = $row['service_name'];
                 echo "<option value=\"owner1\">" . $row['service_name'] . "</option>";
-                $customerName = $row['service_name'];
             }
         } else {
             header("Location: ticket.php?error=sessionerror");
@@ -58,7 +57,7 @@ $date = date('y-m-d h:i:s');
         $sql = "INSERT INTO `ticket_table`
                                 (EMAIL,SERVICE_NAME,SERVICE_DESCRIPTION,RECEIVE_DATE,STATUS) VALUES (?,?,?,?,?)";
         if ($query = mysqli_prepare($connection, $sql)) {
-            mysqli_stmt_bind_param($query, 'sssss', $username, $customerName, $description, $date, $status);
+            mysqli_stmt_bind_param($query, 'sssss', $username, $services, $description, $date, $status);
         }
         mysqli_stmt_execute($query);
         if ($query) {

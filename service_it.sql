@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2023 at 02:01 PM
+-- Generation Time: Jan 17, 2023 at 02:43 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -40,10 +40,8 @@ CREATE TABLE `contract` (
 
 INSERT INTO `contract` (`CONTRACT_ID`, `CUSTOMER_ID`, `SERVICE_NAME`, `EMAIL`) VALUES
 (1, 1, 'PS 4 cleaning', 'ccostache.a'),
-(2, 3, 'Phone repairing', 'alin.ccosta'),
-(3, 3, 'PS 4 cleaning', 'alin.ccosta'),
-(4, 5, 'Phone repairing', 'rares@gmail'),
-(5, 5, 'Phone repairing', 'rares@gmail');
+(2, 1, 'Phone repairing', 'ccostache.a'),
+(3, 3, 'PS 4 cleaning', 'alin.ccosta');
 
 -- --------------------------------------------------------
 
@@ -64,8 +62,7 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`CUSTOMER_ID`, `NAME`, `EMAIL`, `PHONE_NUMBER`) VALUES
 (1, 'Costache Alin', 'ccostache.alin@gmail.com', 771695722),
-(2, 'Costache Florian', 'alin.ccostache@gmail.com', 773830000),
-(3, 'Rares', 'rares@gmail.com', 774562365);
+(2, 'Costache Florian', 'alin.ccostache@gmail.com', 733830000);
 
 -- --------------------------------------------------------
 
@@ -85,11 +82,9 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`ID`, `EMAIL`, `PASSWORD`, `USERTYPE`) VALUES
-(1, 'ccostache.alin@gmail.com', '$2y$10$qWeRH/rf71srOa.WuEuvH.qsyBFuseXchEDaB1SIr4Ks/ElNnSlki', 'user'),
+(1, 'ccostache.alin@gmail.com', '$2y$10$p9f4bbbhIZRXZkV7yknt7ezJIIQ2ELyDDl0.yZiJ8B2XlXkbNWbMG', 'user'),
 (2, 'admin@gmail.com', '$2y$10$IWpCUP1yPIDpH1uaKrUqeO9QLgyz1JbM1i5C25yxQDCbrAimek5nO', 'admin'),
-(3, 'alin.ccostache@gmail.com', '$2y$10$wNUqgkUrNbM/T4dK6N/G/eVunQ27nCwJ/1mFDCc3wv3kRjz2tUhIO', 'user'),
-(4, 'bilossul@gmail.com', '$2y$10$vncskltbNR7aF6yh97nJ7e816CE8dsEo04d2IWUgNKgbKxLu8JEFK', 'admin'),
-(5, 'rares@gmail.com', '$2y$10$Ci6FqNKZ/aH14jFUxcU3GeXk0fx7RNINMO93gtXnJ0EDDixI1qeUK', 'user');
+(3, 'alin.ccostache@gmail.com', '$2y$10$duhp9oUaDTaEMxsd7rMPMueqxHd7mAgPWlsJgx40AYtmW0G/g8jaG', 'user');
 
 -- --------------------------------------------------------
 
@@ -111,11 +106,9 @@ CREATE TABLE `reqeust_services` (
 --
 
 INSERT INTO `reqeust_services` (`id`, `customer_id`, `service_name`, `customer_name`, `email`, `status`) VALUES
-(1, 1, 'PS 4 cleaning', 'Costache Alin', 'ccostache.alin@gmail.com', 'NEW'),
-(2, 3, 'Phone repairing', 'Costache Florian', 'alin.ccostache@gmail.com', 'NEW'),
-(3, 3, 'PS 4 cleaning', 'Costache Florian', 'alin.ccostache@gmail.com', 'DONE'),
-(4, 5, 'Phone repairing', 'Husarescu', 'rares@gmail.com', 'NEW'),
-(5, 5, 'Phone repairing', 'Husi', 'rares@gmail.com', 'NEW');
+(1, 1, 'PS 4 cleaning', 'Costache Alin', 'ccostache.alin@gmail.com', 'DONE'),
+(2, 1, 'Phone repairing', 'Costache Alin', 'ccostache.alin@gmail.com', 'NEW'),
+(3, 3, 'PS 4 cleaning', 'Costache Florian', 'alin.ccostache@gmail.com', 'NEW');
 
 -- --------------------------------------------------------
 
@@ -171,9 +164,9 @@ CREATE TABLE `ticket_table` (
 --
 
 INSERT INTO `ticket_table` (`TICKET_ID`, `EMAIL`, `SERVICE_ID`, `SERVICE_NAME`, `SERVICE_DESCRIPTION`, `RECEIVE_DATE`, `STATUS`) VALUES
-(1, 'ccostache.alin@gmail.com', 0, 'PS 4 cleaning', 'So, 2 days ago I cleaned my ps 4 at your company and now it does not work anymore. Please contact me', '2023-01-17 01:24:50', 'IN PROGRESS'),
-(2, 'alin.ccostache@gmail.com', 0, 'PS 4 cleaning', 'You repaired my phone and now the volume buttom is not working anymore.', '2023-01-17 01:31:01', 'NEW'),
-(3, 'alin.ccostache@gmail.com', 0, 'PS 4 cleaning', 'The ps4 is ovverheating.', '2023-01-17 01:34:35', 'NEW');
+(3, 'ccostache.alin@gmail.com', 0, 'Phone repairing', 'The ps4 is overheating since you clean it. Please solve the problem.', '2023-01-17 02:37:55', 'IN PROGRESS'),
+(4, 'ccostache.alin@gmail.com', 0, 'Phone repairing', 'The volume button is not working anymore since tou repaired my phone', '2023-01-17 02:38:18', 'NEW'),
+(5, 'alin.ccostache@gmail.com', 0, 'PS 4 cleaning', 'You broke it', '2023-01-17 02:43:00', 'NEW');
 
 --
 -- Indexes for dumped tables
@@ -223,25 +216,25 @@ ALTER TABLE `ticket_table`
 -- AUTO_INCREMENT for table `contract`
 --
 ALTER TABLE `contract`
-  MODIFY `CONTRACT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CONTRACT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `CUSTOMER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reqeust_services`
 --
 ALTER TABLE `reqeust_services`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -253,7 +246,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `ticket_table`
 --
 ALTER TABLE `ticket_table`
-  MODIFY `TICKET_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `TICKET_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
