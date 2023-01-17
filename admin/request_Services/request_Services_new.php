@@ -44,7 +44,7 @@ include("../resources/header.php")
                         </tr>
                         </thead>
                         <tbody>
-                        <?php get_request_service(); ?>
+                        <?php request_new(); ?>
                         </tbody>
                     </table>
                 </div>

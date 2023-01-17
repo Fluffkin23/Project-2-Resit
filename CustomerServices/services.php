@@ -16,7 +16,6 @@ if (isset($_POST['send'])) {
     $customer = $_POST['customer'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-
     if (empty($services) || empty($customer) || empty($email) || empty($phone)) {
         echo
         "
@@ -50,6 +49,15 @@ if (isset($_POST['send'])) {
           </script>
       ";
     } else {
+        $usernameLogin = $_SESSION['sessionEmail'];
+        $get_userLogin = "SELECT * from login WHERE EMAIL =?";
+        $stmt = $conn->prepare($get_userLogin);
+        $stmt->bind_param("s", $usernameLogin);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $user_idLogin = $row['ID'];
+        }
         $username = $_SESSION['sessionEmail'];
         $get_user = "SELECT * from customer WHERE EMAIL =?";
         $stmt = $conn->prepare($get_user);
@@ -59,30 +67,26 @@ if (isset($_POST['send'])) {
         while ($row = $result->fetch_assoc()) {
             $user_id = $row['CUSTOMER_ID'];
         }
-
-        $sql1 = "INSERT into reqeust_services (customer_id,service_name, customer_name,email) VALUES (?,?,?,?)";
+        $sql1 = "INSERT into reqeust_services (customer_id,service_name, customer_name,email,status) VALUES (?,?,?,?,?)";
         $stmt1 = mysqli_stmt_init($conn);
+        $status = "NEW";
         if (!mysqli_stmt_prepare($stmt1, $sql1)) {
             header("Location: services.php?error=sqlerror");
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt1, "isss", $user_id, $services, $customer, $email);
+            mysqli_stmt_bind_param($stmt1, "issss", $user_idLogin, $services, $customer, $email, $status);
             mysqli_stmt_execute($stmt1);
             mysqli_stmt_store_result($stmt1);
-
-
             $sql = "INSERT into contract (customer_id,service_name, email) VALUES (?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("Location: services.php?error=sqlerror");
                 exit();
             } else {
-                mysqli_stmt_bind_param($stmt, "iss", $user_id, $services, $email);
+                mysqli_stmt_bind_param($stmt, "iss", $user_idLogin, $services, $email);
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_store_result($stmt);
-
             }
-
         }
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
@@ -131,11 +135,7 @@ if (isset($_POST['send'])) {
               </script>
             ";
     }
-
-
 }
-
-
 ?>
 <div class="contact-section">
     <h1>Choose services</h1>
@@ -152,9 +152,9 @@ if (isset($_POST['send'])) {
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
-            $services=$row['SERVICE_NAME'];
-
-            ?><option><?php echo $services?></option>
+            $services = $row['SERVICE_NAME'];
+            ?>
+            <option><?php echo $services ?></option>
             <?php
         }
         mysqli_stmt_close($stmt);

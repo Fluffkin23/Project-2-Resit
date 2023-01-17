@@ -16,12 +16,12 @@ if (isset($_POST['submit'])) {
                 if (strlen($password) >= 8) {
                     if (preg_match('/^[0-9]{10}+$/', "$phone")) {
                         if ($password === $confirmPass) {
-                            $sql = "SELECT NAME from customer WHERE NAME = ? AND EMAIL = ?";
+                            $sql = "SELECT EMAIL from customer WHERE  EMAIL = ?";
                             $stmt = mysqli_stmt_init($conn);
                             if (!mysqli_stmt_prepare($stmt, $sql)) {
                                 echo "<script> alert('sql error'); document.location.href = 'Registration.php'; </script> ";
                             } else {
-                                mysqli_stmt_bind_param($stmt, "ss", $name, $email);
+                                mysqli_stmt_bind_param($stmt, "s", $email);
                                 mysqli_stmt_execute($stmt);
                                 mysqli_stmt_store_result($stmt);
                                 $rowCount = mysqli_stmt_num_rows($stmt);

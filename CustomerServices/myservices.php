@@ -28,12 +28,11 @@ echo $_SESSION['sessionId'];
             $service = $row['SERVICE_NAME'];
             $email = $row['EMAIL'];
 
-
             ?>
             <tr>
                 <th scope="row"><?php echo $contract_id ?>
                     <br><a href="order_pdf.php?id=<?php echo $contract_id; ?>">PDF</a></th>
-                <td><?php echo $id ?><br></td>
+                <td><?php echo $contract_id ?><br></td>
                 <td><?php echo $service ?> </td>
                 <td><?php echo $email ?></td>
             </tr>
@@ -41,7 +40,6 @@ echo $_SESSION['sessionId'];
         }
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
-
         ?>
         </tbody>
     </table>
