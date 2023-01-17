@@ -27,10 +27,10 @@ include("../resources/header.php")
             <div class="col-md-12">
                 <div class="row">
                     <h1 class="page-header">Request Service </h1>
-                    <a href="request_Services_new.php">Tickets just received </a> <br>
-                    <a href="request_Services_done.php">Tickets Done </a><br>
-                    <a href="request_Services_Inprogress.php">Tickets In Progress </a><br>
-                    <a href="request_Services.php">All tickets </a> <br>
+                    <a href="request_Services_new.php">Services just received </a> <br>
+                    <a href="request_Services_done.php">Services Done </a><br>
+                    <a href="request_Services_Inprogress.php">Services In Progress </a><br>
+                    <a href="request_Services.php">All Services </a> <br>
                 </div>
                 <div class="row">
                     <table class="table table-hover">

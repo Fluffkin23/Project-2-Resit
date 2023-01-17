@@ -1,6 +1,5 @@
 <?php
 include_once '../includes/header.php';
-echo $_SESSION['sessionId'];
 ?>
     <div class="login-title">
         <h1> My Services </h1>
@@ -9,7 +8,6 @@ echo $_SESSION['sessionId'];
         <thead>
         <tr>
             <th scope="col">Contract_id</th>
-            <th scope="col">Customer_id</th>
             <th scope="col">Service name</th>
             <th scope="col">Email</th>
         </tr>
@@ -32,7 +30,6 @@ echo $_SESSION['sessionId'];
             <tr>
                 <th scope="row"><?php echo $contract_id ?>
                     <br><a href="order_pdf.php?id=<?php echo $contract_id; ?>">PDF</a></th>
-                <td><?php echo $contract_id ?><br></td>
                 <td><?php echo $service ?> </td>
                 <td><?php echo $email ?></td>
             </tr>

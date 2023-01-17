@@ -1,4 +1,6 @@
-<?php session_start();
+<?php
+include '../includes/header.php';
+
 $date = date('y-m-d h:i:s');
 ?>
 <!DOCTYPE html>

@@ -142,9 +142,9 @@ if (isset($_POST['send'])) {
 </div>
 <div class="border"></div>
 <form class="contact-form" action="services.php" method="post">
-    <input type="text" name="customer" class="contact-form-text">
+    <input type="text" name="customer" class="contact-form-text" placeholder="Please enter your name!">
     <input type="text" name="email" class="contact-form-text" value="<?php echo $_SESSION['sessionEmail'] ?>">
-    <input type="text" name="phone" class="contact-form-text">
+    <input type="text" name="phone" class="contact-form-text" placeholder="Please enter a valid phone Number! ">
     <select name="services" class="contact-form-text">
         <?php
         $get_services = "Select SERVICE_NAME from services ";
