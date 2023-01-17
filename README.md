@@ -8,6 +8,7 @@
 
 1. Create a new database and name it service_it
 2. Import the database named service_it.sql
+3. Open Index folder and run index.php.
 
 ## Step 2: Create a new user using registration form in registration.php
 ## Step 3: Log In with the previously created credentials
