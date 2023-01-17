@@ -27,7 +27,6 @@ if (isset($_SESSION['sessionEmail'])) {
         </p>
     </div>
     <div class="text-image">
-        <img src="../res/presentation.png" alt="support image for
-                    description text">
+        <img src="../res/presentation.png" alt="support image for description text">
     </div>
 </div>
