@@ -3,12 +3,12 @@
 if (isset($_POST['submit'])) {
     require '../includes/database.php';
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    $name = mysqli_real_escape_string($_POST['name']);
+    $email = mysqli_real_escape_string($_POST['email']);
     //$surname = $_POST['surname'];
-    $password = $_POST['password'];
-    $confirmPass = $_POST['confirmPassword'];
-    $phone = $_POST['number'];
+    $password = mysqli_real_escape_string($_POST['password']);
+    $confirmPass = mysqli_real_escape_string($_POST['confirmPassword']);
+    $phone = mysqli_real_escape_string($_POST['number']);
 
     if (!empty($name) && !empty($email) && !empty($password) && !empty($confirmPass) && !empty($phone)) {
         if (preg_match("/^[a-zA-Z0-9]*/", $name)) {
