@@ -49,6 +49,8 @@ if (isset($_POST['submit'])) {
                                         mysqli_stmt_execute($stmt2);
                                         mysqli_stmt_store_result($stmt2);
                                     }
+                                    mysqli_stmt_close($stmt);
+                                    mysqli_close($conn);
                                 } else {
                                     echo " <script>alert('username and email taken');document.location.href = 'Registration.php';</script>";
                                 }
@@ -73,7 +75,8 @@ if (isset($_POST['submit'])) {
         }
     } else {
         echo "<script>alert('empty fields');document.location.href = 'Registration.php';</script> ";
+
     }
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
+
 }
+
